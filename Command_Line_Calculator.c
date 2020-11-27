@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
     }
     else if (strcmp(argv[1], "divide") == 0)
     {
-        printf("The division is %d", atoi(argv[2]) / atoi(argv[3]));
+        printf("The division is %f", (float)atoi(argv[2]) / atoi(argv[3]));
     }
     else
     {

@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
 
     int arr[number_of_terms - 1];
 
-    printf("****Enter the numbers in ascending order****\n ");
+    printf("****Enter the numbers in ascending order****\n");
     for (int i = 0; i < number_of_terms; i++)
     {
         printf("Enter the %d element of the array: ", i + 1);

@@ -1,5 +1,5 @@
 // Ascending order arranger
-int *ascendingOrderArranger(int arr[], int size)
+void ascendingOrderArranger(int arr[], int size, int *ptr) // The third argument is the address of the base element of the new array where we will store the arranged numbers
 {
     ;
 }
@@ -18,7 +18,7 @@ int shortestNumberFinder(int arr[], int size)
     return temp;
 }
 // Descending order arranger
-int *descendingOrderArranger(int arr[], int size)
+void descendingOrderArranger(int arr[], int size, int *ptr) // The third argument is the address of the base element of the new array where we will store the arranged numbers
 {
     ;
 }

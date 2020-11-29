@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
     printf("How many elements does your sequence contains? : ");
     scanf("%d", &number_of_terms);
 
-    int arr[number_of_terms - 1];
+    int arr[number_of_terms];
 
     printf("****Enter the numbers in ascending order****\n");
     for (int i = 0; i < number_of_terms; i++)

@@ -8,7 +8,7 @@ int *ascendingOrderArranger(int arr[], int size)
 int shortestNumberFinder(int arr[], int size)
 {
     int temp = arr[0];
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; i < size; i++)
     {
         if (temp > arr[i])
         {
@@ -27,7 +27,7 @@ int *descendingOrderArranger(int arr[], int size)
 int highestNumberFinder(int arr[], int size)
 {
     int temp = arr[0];
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; i < size; i++)
     {
         if (temp < arr[i])
         {

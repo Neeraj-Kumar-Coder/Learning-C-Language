@@ -4,27 +4,32 @@
 double func(double x1, double x2);
 void explorer(double *x1, double *x2, double delta1, double delta2);
 double minimumFinder(double temp1, double temp2, double temp3);
+double delta(unsigned x1, unsigned x2);
 
 int main(int argc, char const *argv[])
 {
-    double x1, x2, delta1, delta2, reduction_factor, termination_parameter;
+    double x1, x2, delta1, delta2, reduction_factor, termination_parameter, x1_temp, x2_temp;
     int iteration_count = 0;
 
     printf("Enter vlaue of x1: ");
     scanf("%lf", &x1);
     printf("Enter vlaue of x2: ");
     scanf("%lf", &x2);
+    x1_temp = x1;
+    x2_temp = x2;
     printf("Enter vlaue of (increment vector) delta1: ");
     scanf("%lf", &delta1);
     printf("Enter vlaue of (increment vector) delta2: ");
     scanf("%lf", &delta2);
-    printf("Enter the value of reduction factor: ");
+    printf("Enter the value of reduction factor (>1): ");
     scanf("%lf", &reduction_factor);
     printf("Enter the value of termination parameter: ");
     scanf("%lf", &termination_parameter);
 
-    explorer(&x1, &x2, delta1, delta2);
-    printf("x1 = %lf\nx2 = %lf", x1, x2);
+    while (delta(delta1, delta2) > termination_parameter)
+    {
+        ;
+    }
     return 0;
 }
 
@@ -88,4 +93,9 @@ double minimumFinder(double temp1, double temp2, double temp3)
         }
     }
     return temp1;
+}
+
+double delta(unsigned x1, unsigned x2)
+{
+    return sqrt(pow(x1, 2) + pow(x2, 2));
 }

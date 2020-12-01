@@ -6,7 +6,7 @@ int explorer(double *x1, double *x2, double delta1, double delta2);
 double minimumFinder(double temp1, double temp2, double temp3);
 double delta(double x1, double x2);
 
-double x1_temp, x2_temp;
+double x1_temp, x2_temp; // These will store the previous value of x1 and x2 respectively
 enum
 {
     FAILURE,
@@ -37,6 +37,7 @@ int main(int argc, char const *argv[])
 
     while (delta(delta1, delta2) > termination_parameter)
     {
+        ++iteration_count;
         checker = explorer(&x1, &x2, delta1, delta2);
         if (checker == FAILURE)
         {
@@ -55,12 +56,11 @@ int main(int argc, char const *argv[])
             x2_temp = x2;
             x1 = x_p1;
             x2 = x_p2;
-            ++iteration_count;
             printf("xp1=%lf\nxp2=%lf\n", x1, x2);
         }
     }
 
-    printf("x1 = %lf\nx2 = %lf\nf(x1, x2) = %lf", x1, x2, func(x1, x2));
+    printf("x1 = %lf\nx2 = %lf\nf(x1, x2) = %lf\nNumber of Iterations = %d", x1, x2, func(x1, x2), iteration_count);
     return 0;
 }
 
@@ -68,6 +68,7 @@ int main(int argc, char const *argv[])
 double func(double x1, double x2)
 {
     return (pow((pow(x1, 2) + x2 - 11), 2) + pow((x1 + pow(x2, 2) - 7), 2));
+    // return sqrt(pow((((1.76 * x1 - 1.776) / (23.52 * pow(x1, 2) - 47.51 * x1 + 27.09)) + (3.35 * pow(x1, 3)) / (23.52 * pow(x1, 4) - 761.09 * pow(x1, 2) + 6339.34)), 2) + pow((4.85 * pow(x1, 2) - 9.797 * x1 + 4.95) / (23.52 * pow(x1, 2) - 47.51 * x1 + 27.09) + 1 / (108 * x2) + (4.85 * pow(x1, 4) - 79.62 * pow(x1, 2)) / (23.52 * pow(x1, 4) - 761.09 * pow(x1, 2) + 6339.34), 2));
 }
 
 int explorer(double *x1, double *x2, double delta1, double delta2)

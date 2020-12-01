@@ -2,14 +2,21 @@
 #include <math.h>
 
 double func(double x1, double x2);
-void explorer(double *x1, double *x2, double delta1, double delta2);
+int explorer(double *x1, double *x2, double delta1, double delta2);
 double minimumFinder(double temp1, double temp2, double temp3);
-double delta(unsigned x1, unsigned x2);
+double delta(double x1, double x2);
+
+double x1_temp, x2_temp;
+enum
+{
+    FAILURE,
+    SUCCESS
+};
 
 int main(int argc, char const *argv[])
 {
-    double x1, x2, delta1, delta2, reduction_factor, termination_parameter, x1_temp, x2_temp;
-    int iteration_count = 0;
+    double x1, x2, x_p1, x_p2, delta1, delta2, reduction_factor, termination_parameter;
+    int iteration_count = 0, checker;
 
     printf("Enter vlaue of x1: ");
     scanf("%lf", &x1);
@@ -26,10 +33,29 @@ int main(int argc, char const *argv[])
     printf("Enter the value of termination parameter: ");
     scanf("%lf", &termination_parameter);
 
+    printf("delta = %lf\ntermination parameter = %lf\n", delta(delta1, delta2), termination_parameter); //To be removed
+
     while (delta(delta1, delta2) > termination_parameter)
     {
-        ;
+        printf("I am in loop\n"); //To be removed
+        checker = explorer(&x1, &x2, delta1, delta2);
+        if (checker == FAILURE)
+        {
+            delta1 /= reduction_factor;
+            delta2 /= reduction_factor;
+            checker = SUCCESS;
+            x1 = x1_temp;
+            x2 = x2_temp;
+            continue;
+        }
+
+        x1_temp = x1;
+        x2_temp = x2;
+        x1 = x_p1 = 2 * x1 - x1_temp;
+        x2 = x_p2 = 2 * x2 - x2_temp;
     }
+
+    printf("x1 = %lf\nx2 = %lf\nf(x1, x2) = %lf", x1, x2, func(x1, x2));
     return 0;
 }
 
@@ -38,7 +64,7 @@ double func(double x1, double x2)
     return (pow((pow(x1, 2) + x2 - 11), 2) + pow((x1 + pow(x2, 2) - 7), 2));
 }
 
-void explorer(double *x1, double *x2, double delta1, double delta2)
+int explorer(double *x1, double *x2, double delta1, double delta2)
 {
     double temp1, temp2, temp3, final;
 
@@ -75,6 +101,16 @@ void explorer(double *x1, double *x2, double delta1, double delta2)
     {
         *x2 -= delta2;
     }
+
+    // Testing for the success of the explorer
+    if ((x1_temp == *x1 && x2_temp == *x2) || func(x1_temp, x2_temp) > func(*x1, *x2))
+    {
+        return FAILURE;
+    }
+    else
+    {
+        return SUCCESS;
+    }
 }
 
 double minimumFinder(double temp1, double temp2, double temp3)
@@ -95,7 +131,7 @@ double minimumFinder(double temp1, double temp2, double temp3)
     return temp1;
 }
 
-double delta(unsigned x1, unsigned x2)
+double delta(double x1, double x2)
 {
     return sqrt(pow(x1, 2) + pow(x2, 2));
 }

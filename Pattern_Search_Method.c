@@ -37,7 +37,6 @@ int main(int argc, char const *argv[])
 
     while (delta(delta1, delta2) > termination_parameter)
     {
-        printf("I am in loop\n"); //To be removed
         checker = explorer(&x1, &x2, delta1, delta2);
         if (checker == FAILURE)
         {
@@ -48,11 +47,17 @@ int main(int argc, char const *argv[])
             x2 = x2_temp;
             continue;
         }
-
-        x1_temp = x1;
-        x2_temp = x2;
-        x1 = x_p1 = 2 * x1 - x1_temp;
-        x2 = x_p2 = 2 * x2 - x2_temp;
+        else
+        {
+            x_p1 = 2 * x1 - x1_temp;
+            x_p2 = 2 * x2 - x2_temp;
+            x1_temp = x1;
+            x2_temp = x2;
+            x1 = x_p1;
+            x2 = x_p2;
+            ++iteration_count;
+            printf("xp1=%lf\nxp2=%lf\n", x1, x2);
+        }
     }
 
     printf("x1 = %lf\nx2 = %lf\nf(x1, x2) = %lf", x1, x2, func(x1, x2));
@@ -72,6 +77,7 @@ int explorer(double *x1, double *x2, double delta1, double delta2)
     temp1 = func(*x1 + delta1, *x2);
     temp2 = func(*x1, *x2);
     temp3 = func(*x1 - delta1, *x2);
+    printf("temp1 = %lf\ntemp2 = %lf\ntemp3 = %lf\n", temp1, temp2, temp3);
     if (minimumFinder(temp1, temp2, temp3) == temp1)
     {
         *x1 += delta1;
@@ -84,6 +90,7 @@ int explorer(double *x1, double *x2, double delta1, double delta2)
     {
         *x1 -= delta1;
     }
+    printf("x1 = %lf\nx2 = %lf\n", *x1, *x2);
 
     // Working on x2
     temp1 = func(*x1, *x2 + delta2);
@@ -101,9 +108,11 @@ int explorer(double *x1, double *x2, double delta1, double delta2)
     {
         *x2 -= delta2;
     }
+    printf("temp1 = %lf\ntemp2 = %lf\ntemp3 = %lf\n", temp1, temp2, temp3);
+    printf("x1 = %lf\nx2 = %lf\n\n", *x1, *x2);
 
     // Testing for the success of the explorer
-    if ((x1_temp == *x1 && x2_temp == *x2) || func(x1_temp, x2_temp) > func(*x1, *x2))
+    if ((x1_temp == *x1 && x2_temp == *x2) || func(x1_temp, x2_temp) < func(*x1, *x2))
     {
         return FAILURE;
     }

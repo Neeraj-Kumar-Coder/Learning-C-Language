@@ -67,8 +67,8 @@ int main(int argc, char const *argv[])
 // Enter your function here
 double func(double x1, double x2)
 {
-    return (pow((pow(x1, 2) + x2 - 11), 2) + pow((x1 + pow(x2, 2) - 7), 2));
-    // return sqrt(pow((((1.76 * x1 - 1.776) / (23.52 * pow(x1, 2) - 47.51 * x1 + 27.09)) + (3.35 * pow(x1, 3)) / (23.52 * pow(x1, 4) - 761.09 * pow(x1, 2) + 6339.34)), 2) + pow((4.85 * pow(x1, 2) - 9.797 * x1 + 4.95) / (23.52 * pow(x1, 2) - 47.51 * x1 + 27.09) + 1 / (108 * x2) + (4.85 * pow(x1, 4) - 79.62 * pow(x1, 2)) / (23.52 * pow(x1, 4) - 761.09 * pow(x1, 2) + 6339.34), 2));
+    // return (pow((pow(x1, 2) + x2 - 11), 2) + pow((x1 + pow(x2, 2) - 7), 2));
+    return sqrt(pow((((1.76 * x1 - 1.776) / (23.52 * pow(x1, 2) - 47.51 * x1 + 27.09)) + (3.35 * pow(x1, 3)) / (23.52 * pow(x1, 4) - 761.09 * pow(x1, 2) + 6339.34)), 2) + pow((4.85 * pow(x1, 2) - 9.797 * x1 + 4.95) / (23.52 * pow(x1, 2) - 47.51 * x1 + 27.09) + 1 / (108 * x2) + (4.85 * pow(x1, 4) - 79.62 * pow(x1, 2)) / (23.52 * pow(x1, 4) - 761.09 * pow(x1, 2) + 6339.34), 2));
 }
 
 int explorer(double *x1, double *x2, double delta1, double delta2)

@@ -5,8 +5,10 @@ double func(double x1, double x2);
 int explorer(double *x1, double *x2, double delta1, double delta2);
 double minimumFinder(double temp1, double temp2, double temp3);
 double delta(double x1, double x2);
+double maxTeller(double value1, double value2);
 
-double x1_temp, x2_temp; // These will store the previous value of x1 and x2 respectively
+double x1_temp, x2_temp;                                // These will store the previous value of x1 and x2 respectively
+int permission1, permission2, permission3, permission4; // These are the permission variables for the ranges of x1 and x2
 enum
 {
     FAILURE,
@@ -24,6 +26,14 @@ int main(int argc, char const *argv[])
     scanf("%lf", &x2);
     x1_temp = x1;
     x2_temp = x2;
+    printf("Should x1 be always greater than zero? (YES = 1 / NO = 0) : ");
+    scanf("%d", &permission1);
+    printf("Should x2 be always greater than zero? (YES = 1 / NO = 0) : ");
+    scanf("%d", &permission2);
+    printf("Should x1 be always less than zero? (YES = 1 / NO = 0) : ");
+    scanf("%d", &permission3);
+    printf("Should x2 be always less than zero? (YES = 1 / NO = 0) : ");
+    scanf("%d", &permission4);
     printf("Enter vlaue of (increment vector) delta1: ");
     scanf("%lf", &delta1);
     printf("Enter vlaue of (increment vector) delta2: ");
@@ -81,17 +91,100 @@ int explorer(double *x1, double *x2, double delta1, double delta2)
     temp3 = func(*x1 - delta1, *x2);
     printf("func(x1 + delta1, x2) = %lf\nfunc(x1, x2) = %lf\nfunc(x1 - delta1, x2) = %lf\n", temp1, temp2, temp3);
 
+recheck1:
     if (minimumFinder(temp1, temp2, temp3) == temp1)
     {
-        *x1 += delta1;
+        if (permission1 == 1)
+        {
+            if ((*x1 + delta1) > 0)
+            {
+                *x1 += delta1;
+            }
+            else
+            {
+                temp1 = maxTeller(temp2, temp3) + 1;
+                goto recheck1;
+            }
+        }
+        else if (permission3 == 1)
+        {
+            if ((*x1 + delta1) < 0)
+            {
+                *x1 += delta1;
+            }
+            else
+            {
+                temp1 = maxTeller(temp2, temp3) + 1;
+                goto recheck1;
+            }
+        }
+
+        else
+        {
+            *x1 += delta1;
+        }
     }
     else if (minimumFinder(temp1, temp2, temp3) == temp2)
     {
-        *x1 = *x1;
+        if (permission1 == 1)
+        {
+            if (*x1 > 0)
+            {
+                *x1 = *x1;
+            }
+            else
+            {
+                temp2 = maxTeller(temp1, temp3) + 1;
+                goto recheck1;
+            }
+        }
+        else if (permission3 == 1)
+        {
+            if (*x1 < 0)
+            {
+                *x1 = *x1;
+            }
+            else
+            {
+                temp2 = maxTeller(temp1, temp3) + 1;
+                goto recheck1;
+            }
+        }
+        else
+        {
+            *x1 = *x1;
+        }
     }
     else if (minimumFinder(temp1, temp2, temp3) == temp3)
     {
-        *x1 -= delta1;
+        if (permission1 == 1)
+        {
+            if ((*x1 - delta1) > 0)
+            {
+                *x1 -= delta1;
+            }
+            else
+            {
+                temp3 = maxTeller(temp1, temp2) + 1;
+                goto recheck1;
+            }
+        }
+        else if (permission3 == 1)
+        {
+            if ((*x1 - delta1) < 0)
+            {
+                *x1 -= delta1;
+            }
+            else
+            {
+                temp3 = maxTeller(temp1, temp2) + 1;
+                goto recheck1;
+            }
+        }
+        else
+        {
+            *x1 -= delta1;
+        }
     }
 
     // Working on x2
@@ -100,17 +193,100 @@ int explorer(double *x1, double *x2, double delta1, double delta2)
     temp3 = func(*x1, *x2 - delta2);
     printf("func(x1 + delta1, x2 + delta2) = %lf\nfunc(x1 + delta1, x2) = %lf\nfunc(x1 - delta1, x2 - delta2) = %lf\n", temp1, temp2, temp3);
 
+recheck2:
     if (minimumFinder(temp1, temp2, temp3) == temp1)
     {
-        *x2 += delta2;
+        if (permission2 == 1)
+        {
+            if ((*x2 + delta2) > 0)
+            {
+                *x2 += delta2;
+            }
+            else
+            {
+                temp1 = maxTeller(temp2, temp3) + 1;
+                goto recheck2;
+            }
+        }
+        else if (permission4 == 1)
+        {
+            if ((*x2 + delta2) < 0)
+            {
+                *x2 += delta2;
+            }
+            else
+            {
+                temp1 = maxTeller(temp2, temp3) + 1;
+                goto recheck2;
+            }
+        }
+
+        else
+        {
+            *x2 += delta2;
+        }
     }
     else if (minimumFinder(temp1, temp2, temp3) == temp2)
     {
-        *x2 = *x2;
+        if (permission2 == 1)
+        {
+            if (*x2 > 0)
+            {
+                *x2 = *x2;
+            }
+            else
+            {
+                temp2 = maxTeller(temp1, temp3) + 1;
+                goto recheck2;
+            }
+        }
+        else if (permission4 == 1)
+        {
+            if (*x2 < 0)
+            {
+                *x2 = *x2;
+            }
+            else
+            {
+                temp2 = maxTeller(temp1, temp3) + 1;
+                goto recheck2;
+            }
+        }
+        else
+        {
+            *x2 = *x2;
+        }
     }
     else if (minimumFinder(temp1, temp2, temp3) == temp3)
     {
-        *x2 -= delta2;
+        if (permission2 == 1)
+        {
+            if ((*x2 - delta2) > 0)
+            {
+                *x2 -= delta2;
+            }
+            else
+            {
+                temp3 = maxTeller(temp1, temp2) + 1;
+                goto recheck2;
+            }
+        }
+        else if (permission4 == 1)
+        {
+            if ((*x2 - delta2) < 0)
+            {
+                *x2 -= delta2;
+            }
+            else
+            {
+                temp3 = maxTeller(temp1, temp2) + 1;
+                goto recheck2;
+            }
+        }
+        else
+        {
+            *x2 -= delta2;
+        }
     }
     printf("x1 = %lf\nx2 = %lf\n\n", *x1, *x2);
 
@@ -146,4 +322,16 @@ double minimumFinder(double temp1, double temp2, double temp3)
 double delta(double x1, double x2)
 {
     return sqrt(pow(x1, 2) + pow(x2, 2));
+}
+
+double maxTeller(double value1, double value2)
+{
+    if (value1 > value2)
+    {
+        return value1;
+    }
+    else
+    {
+        return value2;
+    }
 }

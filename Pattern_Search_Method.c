@@ -64,6 +64,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+// Enter your function here
 double func(double x1, double x2)
 {
     return (pow((pow(x1, 2) + x2 - 11), 2) + pow((x1 + pow(x2, 2) - 7), 2));

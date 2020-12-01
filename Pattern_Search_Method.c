@@ -1,3 +1,10 @@
+/*
+    Author : Neeraj Kumar
+    Purpose : Optimization Technique Program
+    Date : 01/12/2020
+    Time : 09:57 AM
+*/
+// This is an Optimization Technique Program called "Hooke-Jeeves Pattern Search Method"
 #include <stdio.h>
 #include <math.h>
 

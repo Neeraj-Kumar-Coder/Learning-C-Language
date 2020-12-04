@@ -17,3 +17,39 @@ void shellSort(int v[], int n) // 'n' is the size of the array v[]
         }
     }
 }
+
+// Creating my own function by taking inspiration from above function
+
+void selfShellSortAscending(int arr[], int size)
+{
+    int temp;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i + 1; j < size; j++)
+        {
+            if (arr[i] > arr[j])
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+void selfShellSortDescending(int arr[], int size)
+{
+    int temp;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i + 1; j < size; j++)
+        {
+            if (arr[i] < arr[j])
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}

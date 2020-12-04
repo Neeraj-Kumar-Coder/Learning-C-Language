@@ -31,7 +31,9 @@ int main(int argc, char const *argv[])
     // }
     // printf("\n");
 
-    shellSort(arr, number_of_terms);
+    // shellSort(arr, number_of_terms);
+    // selfShellSortAscending(arr, number_of_terms);
+    selfShellSortDescending(arr, number_of_terms);
 
     for (int i = 0; i < number_of_terms; i++)
     {

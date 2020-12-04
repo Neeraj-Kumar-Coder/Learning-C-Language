@@ -9,10 +9,11 @@ enum permissions
 void selfShellSortAscending(int arr[], int size);  // Sort the array in Ascending order
 void selfShellSortDescending(int arr[], int size); // Sort the array in Descending order
 int circleCount(int *ptr, int a, int b);           // It will count the position in the array in circular way
-int termTeller(int *arr, int a);                   // It will tell the position of 'a' in array 'arr'
+int termTeller(int *arr, int a);                   // It will tell the position of 'a' in array 'arr' (Method 1)
 int matchTeller(char s1[], char s2[]);             // It will tell the first matching character in s1 and s2, returns -1 if no match is found
-void squeeze(char s1[], char s2[]);                //This funtion will remove each character in s1[] that matches any character in the string s2[]
-void textart(char a);                              //The text art function
+void squeeze(char s1[], char s2[]);                // This funtion will remove each character in s1[] that matches any character in the string s2[]
+void textart(char a);                              // The text art function
+int getNum(int x, int v[], int n);                 // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
 
 void selfShellSortAscending(int arr[], int size)
 {
@@ -268,4 +269,30 @@ void textart(char a)
     {
         printf("---#########---\n---##-----##---\n---##-----##---\n---##-----##---\n---#########---\n----------##---\n----------##---\n----------##---\n---#########---\n\n");
     }
+}
+
+int getNum(int x, int v[], int n)
+{
+    int low, high, mid;
+    low = 0;
+    high = n - 1;
+
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+        if (x < v[mid])
+        {
+            high = mid - 1;
+        }
+        else if (x > v[mid])
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            return mid;
+        }
+    }
+
+    return -1;
 }

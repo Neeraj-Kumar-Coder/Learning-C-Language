@@ -15,6 +15,7 @@ void squeeze(char s1[], char s2[]);                // This funtion will remove e
 void textart(char a);                              // The text art function
 int getNum(int x, int v[], int n);                 // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
 
+// Function code starts here
 void selfShellSortAscending(int arr[], int size)
 {
     int temp;

@@ -56,9 +56,7 @@ int circleCount(int *ptr, int a, int b)
     {
         if (b <= a * i)
         {
-            ptr[b + a - 1 - a * i] = 0;
-
-            break;
+            return (b + a - 1 - a * i);
         }
         else
         {

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int circleCount(int *ptr, int a, int b);
+void circleCount(int *ptr, int a, int b);
 int termTeller(int *arr, int a);
 
 int main(int argc, char const *argv[])
@@ -103,7 +103,7 @@ end:
     return 0;
 }
 
-int circleCount(int *ptr, int a, int b)
+void circleCount(int *ptr, int a, int b)
 {
     for (int i = 0; i < b; i++)
     {

@@ -1,4 +1,3 @@
-#include <string.h>
 enum permissions
 {
     NO,
@@ -14,6 +13,7 @@ int matchTeller(char s1[], char s2[]);             // It will tell the first mat
 void squeeze(char s1[], char s2[]);                // This funtion will remove each character in s1[] that matches any character in the string s2[]
 void textart(char a);                              // The text art function
 int getNum(int x, int v[], int n);                 // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
+int stringLength(char str[]);                      // Returns the length of the string
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -80,9 +80,9 @@ int termTeller(int *arr, int a)
 
 int matchTeller(char s1[], char s2[])
 {
-    for (int i = 0; i < strlen(s1); i++)
+    for (int i = 0; i < stringLength(s1); i++)
     {
-        for (int j = 0; j < strlen(s2); j++)
+        for (int j = 0; j < stringLength(s2); j++)
         {
             if (s1[i] == s2[j])
             {
@@ -97,9 +97,9 @@ void squeeze(char s1[], char s2[])
 {
     int match = NO, k = 0;
 
-    for (int i = 0; i < strlen(s1); i++)
+    for (int i = 0; i < stringLength(s1); i++)
     {
-        for (int j = 0; j < strlen(s2); j++)
+        for (int j = 0; j < stringLength(s2); j++)
         {
             if (s1[i] == s2[j])
             {
@@ -118,6 +118,18 @@ void squeeze(char s1[], char s2[])
     }
 
     s1[k] = '\0';
+}
+
+int stringLength(char str[])
+{
+    int length = 0;
+
+    while (str[length] != '\0')
+    {
+        ++length;
+    }
+
+    return length;
 }
 
 void textart(char a)

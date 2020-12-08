@@ -14,6 +14,7 @@ void squeeze(char s1[], char s2[]);                // This funtion will remove e
 void textart(char a);                              // The text art function
 int getNum(int x, int v[], int n);                 // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
 int stringLength(char str[]);                      // Returns the length of the string
+void expand(char s1[], char s2[]);                 // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -306,4 +307,80 @@ int getNum(int x, int v[], int n)
     }
 
     return -1;
+}
+
+void expand(char s1[], char s2[])
+{
+    int i = 0, j = 0;
+
+    while (s1[i] != '\0')
+    {
+        s2[j++] = s1[i++];
+        if (s1[i] == '-')
+        {
+            ++i;
+            if (s1[i] >= 'a' && s1[i] <= 'z' && s1[i - 2] >= 'a' && s1[i - 2] <= 'z')
+            {
+                if (s1[i - 2] < s1[i])
+                {
+                    for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
+                    {
+                        s2[j++] = s1[i - 2] + k;
+                    }
+                }
+                else
+                {
+                    for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
+                    {
+                        s2[j++] = s1[i - 2] - k;
+                    }
+                }
+
+                ++i;
+            }
+            else if (s1[i] >= 'A' && s1[i] <= 'Z' && s1[i - 2] >= 'A' && s1[i - 2] <= 'Z')
+            {
+                if (s1[i - 2] < s1[i])
+                {
+                    for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
+                    {
+                        s2[j++] = s1[i - 2] + k;
+                    }
+                }
+                else
+                {
+                    for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
+                    {
+                        s2[j++] = s1[i - 2] - k;
+                    }
+                }
+
+                ++i;
+            }
+            else if (s1[i] >= '0' && s1[i] <= '9' && s1[i - 2] >= '0' && s1[i - 2] <= '9')
+            {
+                if (s1[i - 2] < s1[i])
+                {
+                    for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
+                    {
+                        s2[j++] = s1[i - 2] + k;
+                    }
+                }
+                else
+                {
+                    for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
+                    {
+                        s2[j++] = s1[i - 2] - k;
+                    }
+                }
+
+                ++i;
+            }
+            else
+            {
+                s2[j++] = '-';
+            }
+        }
+    }
+    s2[j] = '\0';
 }

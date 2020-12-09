@@ -25,77 +25,108 @@ int main(int argc, char const *argv[])
 }
 
 // This function assumes that s2 is of sufficient large size to store the full expanded form of s1
+// void expand(char s1[], char s2[])
+// {
+//     int i = 0, j = 0;
+
+//     while (s1[i] != '\0')
+//     {
+//         s2[j++] = s1[i++];
+//         if (s1[i] == '-')
+//         {
+//             ++i;
+//             if (s1[i] >= 'a' && s1[i] <= 'z' && s1[i - 2] >= 'a' && s1[i - 2] <= 'z')
+//             {
+//                 if (s1[i - 2] < s1[i])
+//                 {
+//                     for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
+//                     {
+//                         s2[j++] = s1[i - 2] + k;
+//                     }
+//                 }
+//                 else
+//                 {
+//                     for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
+//                     {
+//                         s2[j++] = s1[i - 2] - k;
+//                     }
+//                 }
+
+//                 ++i;
+//             }
+//             else if (s1[i] >= 'A' && s1[i] <= 'Z' && s1[i - 2] >= 'A' && s1[i - 2] <= 'Z')
+//             {
+//                 if (s1[i - 2] < s1[i])
+//                 {
+//                     for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
+//                     {
+//                         s2[j++] = s1[i - 2] + k;
+//                     }
+//                 }
+//                 else
+//                 {
+//                     for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
+//                     {
+//                         s2[j++] = s1[i - 2] - k;
+//                     }
+//                 }
+
+//                 ++i;
+//             }
+//             else if (s1[i] >= '0' && s1[i] <= '9' && s1[i - 2] >= '0' && s1[i - 2] <= '9')
+//             {
+//                 if (s1[i - 2] < s1[i])
+//                 {
+//                     for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
+//                     {
+//                         s2[j++] = s1[i - 2] + k;
+//                     }
+//                 }
+//                 else
+//                 {
+//                     for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
+//                     {
+//                         s2[j++] = s1[i - 2] - k;
+//                     }
+//                 }
+
+//                 ++i;
+//             }
+//             else
+//             {
+//                 s2[j++] = '-';
+//             }
+//         }
+//     }
+//     s2[j] = '\0';
+// }
+
 void expand(char s1[], char s2[])
 {
-    int i = 0, j = 0;
-
-    while (s1[i] != '\0')
+    char c;
+    int i, j;
+    i = j = 0;
+    while ((c = s1[i++]) != '\0')
     {
-        s2[j++] = s1[i++];
-        if (s1[i] == '-')
+        if (s1[i] == '-' && s1[i + 1] >= c)
         {
-            ++i;
-            if (s1[i] >= 'a' && s1[i] <= 'z' && s1[i - 2] >= 'a' && s1[i - 2] <= 'z')
+            i++;
+            while (c < s1[i])
             {
-                if (s1[i - 2] < s1[i])
-                {
-                    for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
-                    {
-                        s2[j++] = s1[i - 2] + k;
-                    }
-                }
-                else
-                {
-                    for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
-                    {
-                        s2[j++] = s1[i - 2] - k;
-                    }
-                }
-
-                ++i;
+                s2[j++] = c++;
             }
-            else if (s1[i] >= 'A' && s1[i] <= 'Z' && s1[i - 2] >= 'A' && s1[i - 2] <= 'Z')
+        }
+        else if (s1[i] == '-' && s1[i + 1] <= c)
+        {
+            i++;
+            while (c > s1[i])
             {
-                if (s1[i - 2] < s1[i])
-                {
-                    for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
-                    {
-                        s2[j++] = s1[i - 2] + k;
-                    }
-                }
-                else
-                {
-                    for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
-                    {
-                        s2[j++] = s1[i - 2] - k;
-                    }
-                }
-
-                ++i;
+                s2[j++] = c--;
             }
-            else if (s1[i] >= '0' && s1[i] <= '9' && s1[i - 2] >= '0' && s1[i - 2] <= '9')
-            {
-                if (s1[i - 2] < s1[i])
-                {
-                    for (int k = 1; (s1[i - 2] + k) <= s1[i]; k++)
-                    {
-                        s2[j++] = s1[i - 2] + k;
-                    }
-                }
-                else
-                {
-                    for (int k = 1; (s1[i - 2] - k) >= s1[i]; k++)
-                    {
-                        s2[j++] = s1[i - 2] - k;
-                    }
-                }
-
-                ++i;
-            }
-            else
-            {
-                s2[j++] = '-';
-            }
+        }
+        else
+        {
+            s2[j++] = c;
         }
     }
     s2[j] = '\0';

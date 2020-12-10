@@ -16,6 +16,8 @@ int getNum(int x, int v[], int n);                 // It will return the positio
 int stringLength(char str[]);                      // Returns the length of the string
 void expand(char s1[], char s2[]);                 // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
 void itob(int n, char s[], int b);                 // This function will convert the integer n into the required base-b notation and save it in string s
+int stringLength(char s[]);                        // Return the length of the string
+void reverse(char s[]);                            // Reverses a string
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -351,7 +353,7 @@ void itob(int n, char s[], int b)
             s[i++] = n % b + '0';
         } while ((n /= b) != 0);
         s[i] = '\0';
-        strrev(s);
+        reverse(s);
     }
     else if (b == 16 && b > 0)
     {
@@ -368,10 +370,29 @@ void itob(int n, char s[], int b)
 
         } while ((n /= b) != 0);
         s[i] = '\0';
-        strrev(s);
+        reverse(s);
     }
     else
     {
         s[i++] = 'N', s[i++] = '/', s[i++] = 'A', s[i] = '\0';
+    }
+}
+
+int stringLength(char s[])
+{
+    int i = 0, length = 0;
+    while (s[i++] != '\0')
+    {
+        ++length;
+    }
+    return length;
+}
+
+void reverse(char s[])
+{
+    int c, i, j;
+    for (i = 0, j = stringLength(s) - 1; i < j; i++, j--)
+    {
+        c = s[i], s[i] = s[j], s[j] = c;
     }
 }

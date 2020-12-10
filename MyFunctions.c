@@ -15,6 +15,7 @@ void textart(char a);                              // The text art function
 int getNum(int x, int v[], int n);                 // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
 int stringLength(char str[]);                      // Returns the length of the string
 void expand(char s1[], char s2[]);                 // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
+void itob(int n, char s[], int b);                 // This function will convert the integer n into the required base-b notation and save it in string s
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -338,4 +339,39 @@ void expand(char s1[], char s2[])
         }
     }
     s2[j] = '\0';
+}
+
+void itob(int n, char s[], int b)
+{
+    int i = 0;
+    if (b >= 0 && b <= 10 && n > 0)
+    {
+        do
+        {
+            s[i++] = n % b + '0';
+        } while ((n /= b) != 0);
+        s[i] = '\0';
+        strrev(s);
+    }
+    else if (b == 16 && b > 0)
+    {
+        do
+        {
+            if ((n % b) > 10)
+            {
+                s[i++] = (n % b) + 55;
+            }
+            else
+            {
+                s[i++] = n % b + '0';
+            }
+
+        } while ((n /= b) != 0);
+        s[i] = '\0';
+        strrev(s);
+    }
+    else
+    {
+        s[i++] = 'N', s[i++] = '/', s[i++] = 'A', s[i] = '\0';
+    }
 }

@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <limits.h>
 
+#if 0
 void bit_pattern(int u)
 {
     int i, x, word;
@@ -16,6 +17,7 @@ void bit_pattern(int u)
         mask >>= 1;             /* shift mask to the right by 1 bit */
     }
 }
+#endif
 
 // Using the if and endif preprocessor directives
 
@@ -108,6 +110,13 @@ int main(void)
 #endif
 
 // code testing from chapter 4
+struct Code_Testing
+{
+    int x;
+    int y;
+};
+
+#if 0
 int main(void)
 {
     // int a, b, c;
@@ -116,5 +125,21 @@ int main(void)
     // printf("The largest number is %d\n", (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c)); // Nesting of conditional operator
 
     // printf("%d\n", -22 >> 1);
-    bit_pattern(26);
+    // bit_pattern(26);
+    // int x = 99, y = 42;
+    // printf("%i\n", (x *= 2, y));
+    // printf("%i\n", x);
+
+    struct Code_Testing a;
+    struct Code_Testing *pointer = &a;
+    // p->x == (*p).x
+    pointer->x = 10;
+    pointer->y = 998;
+    printf("%i\n%i\n", a.x, a.y);
+}
+#endif
+
+int main(void)
+{
+    ;
 }

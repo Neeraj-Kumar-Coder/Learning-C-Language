@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <limits.h>
 
 // Using the if and endif preprocessor directives
 
@@ -43,6 +44,7 @@ int main(void)
 }
 #endif
 
+#if 0
 // Fixed width integer type (must use <stdint.h> header)
 int main(void)
 {
@@ -63,4 +65,31 @@ int main(void)
     // char *c="mod"; // string literal
     // c[0]='f'; // undefined behaviour for changing string literal. Best is to use char const *c
     // puts(c); // Produce undesired output bcoz of absense of space for the null character
+
+#if 0
+    printf("Minimum value of signed char is : %d\n", SCHAR_MIN);
+    printf("Maximum value of signed char is : %d\n", SCHAR_MAX);
+    printf("Maximum value of unsigned char is : %d\n", UCHAR_MAX);
+    printf("Minimum value of char is : %d\n", CHAR_MIN); // Default is taken as signed for unspecified char
+    printf("Maximum value of char is : %d\n", CHAR_MAX); // Default is taken as signed for unspecified char
+    printf("Maximum value of short integer is: %d\n", SHRT_MAX);
+    printf("Minimum value of short integer is: %d\n", SHRT_MIN);
+    printf("Maximum value of unsigned short integer is: %d\n", USHRT_MAX);
+    printf("Maximum value of integer is : %d\n", INT_MAX);
+    printf("Minimum value of integer is : %d\n", INT_MIN);
+    printf("Maximum value of unsigned integer is : %u\n", UINT_MAX);
+    printf("Maximum value of long integer is : %ld\n", LONG_MAX);
+    printf("Minimum value of long integer is : %ld\n", LONG_MIN);
+    printf("Maximum value of unsigned long integer is : %lu\n", ULONG_MAX);
+    printf("Maximum value of long long integer is : %lld\n", LLONG_MAX);
+    printf("Minimum value of long long integer is : %lld\n", LLONG_MIN);
+    printf("Maximum value of unsigned long long integer is : %llu", ULLONG_MAX);
+#endif
+}
+#endif
+
+// code testing from chapter 4
+int main(void)
+{
+    ;
 }

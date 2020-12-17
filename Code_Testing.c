@@ -2,9 +2,25 @@
 #include <stdint.h>
 #include <limits.h>
 
+void bit_pattern(int u)
+{
+    int i, x, word;
+    unsigned mask = 1;
+
+    word = CHAR_BIT * sizeof(int);
+    mask = mask << (word - 1); /* shift 1 to the leftmost position */
+    for (i = 1; i <= word; i++)
+    {
+        x = (u & mask) ? 1 : 0; /* identify the bit */
+        printf("%d", x);        /* print bit value */
+        mask >>= 1;             /* shift mask to the right by 1 bit */
+    }
+}
+
 // Using the if and endif preprocessor directives
 
-/* int main(void)
+#if 0
+int main(void)
 {
 #if 0 // This is a preprocessor used to comment a batch of code
     printf("This code should not be executed\n");
@@ -13,7 +29,8 @@
     puts("This is always executed");
     puts("Checking if new line prints!");
     return 0;
-} */
+}
+#endif
 
 #if 0
 int main(void)
@@ -65,6 +82,8 @@ int main(void)
     // char *c="mod"; // string literal
     // c[0]='f'; // undefined behaviour for changing string literal. Best is to use char const *c
     // puts(c); // Produce undesired output bcoz of absense of space for the null character
+    char *str="hi " "I am " "Neeraj " "Kumar "; // string concatination at compile time
+    puts(str);
 
 #if 0
     printf("Minimum value of signed char is : %d\n", SCHAR_MIN);
@@ -91,5 +110,11 @@ int main(void)
 // code testing from chapter 4
 int main(void)
 {
-    ;
+    // int a, b, c;
+    // printf("Enter a, b, c here : ");
+    // scanf("%d %d %d", &a, &b, &c);
+    // printf("The largest number is %d\n", (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c)); // Nesting of conditional operator
+
+    // printf("%d\n", -22 >> 1);
+    bit_pattern(26);
 }

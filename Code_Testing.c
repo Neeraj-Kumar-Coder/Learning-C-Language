@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <limits.h>
+#include <stdalign.h>
 
 #if 0
 void bit_pattern(int u)
@@ -109,12 +110,14 @@ int main(void)
 }
 #endif
 
+#if 0
 // code testing from chapter 4
 struct Code_Testing
 {
     int x;
     int y;
 };
+#endif
 
 #if 0
 int main(void)
@@ -136,10 +139,27 @@ int main(void)
     pointer->x = 10;
     pointer->y = 998;
     printf("%i\n%i\n", a.x, a.y);
+    ptrdiff_t diff;
+    int *ptr1, *ptr2;
+    int a = 7, b = 95;
+    ptr1 = &a;
+    ptr2 = &b;
+    diff = ptr1 - ptr2;
+    printf("The difference between the pointers location difference is: %ti", diff);
+    printf("The size of int is : %llu\n", sizeof(int));
+    printf("The alignment of int is : %zu\n", alignof(int));
+    printf("The size of char is : %llu\n", sizeof(char));
+    printf("The alignment of char is : %zu\n", alignof(char));
+    printf("The size of short is : %llu\n", sizeof(short));
+    printf("The alignment of short is : %zu\n", alignof(short));
+    printf("The size of long is : %llu\n", sizeof(long));
+    printf("The alignment of long is : %zu\n", alignof(long));
+    printf("The size of long long is : %llu\n", sizeof(long long));
+    printf("The alignment of long long is : %zu\n", alignof(long long));
 }
 #endif
 
+// from chapter 5
 int main(void)
 {
-    ;
 }

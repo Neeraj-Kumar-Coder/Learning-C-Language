@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <limits.h>
 #include <stdalign.h>
+#include <stdbool.h>
 
 #if 0
 void bit_pattern(int u)
@@ -160,6 +162,52 @@ int main(void)
 #endif
 
 // from chapter 5
+#if 0
+int main(void)
+{
+    // // _Bool a, b;
+    // // or
+    // bool a, b;
+
+    // a = -9;
+    // b = -9;
+    // if (a == true)
+    // {
+    //     puts("This will print");
+    // }
+    // // if (b == false)
+    // // or
+    // if (!b)
+    // {
+    //     puts("This will also print");
+    // }
+
+    // _Bool a, b;
+    // char *x = NULL;
+    // int *y = NULL;
+
+    // a = x, b = y;
+
+    // if (!a)
+    // {
+    //     puts("Let's see if this will print");
+    // }
+    // if (!b)
+    // {
+    //     puts("Also testing this");
+    // }
+
+    // double *A = malloc(1 * sizeof *A);
+    // if (!A)
+    // {
+    //     perror("allocation problems");
+    //     exit(EXIT_FAILURE);
+    // }
+    // free(A);
+}
+#endif
+
+// chapter 6
 int main(void)
 {
 }

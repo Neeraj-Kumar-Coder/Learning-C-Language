@@ -211,31 +211,71 @@ int main(void)
 // chapter 6
 int main(void)
 {
-    // int toknum = 0;
-    // char src[] = "Hello,, world!"; /* This string cannot be a const or string literal as this string must be modified */
-    // const char delimiters[] = ", !";
-    // char *token = strtok(src, delimiters);
-    // while (token != NULL)
-    // {
-    //     printf("%d: [%s]\n", ++toknum, token);
-    //     token = strtok(NULL, delimiters); // We have to pass NULL to the first argument to continue tokanizing the string
-    // }
-    // puts(src);
-    // /* source is now "Hello\0, world\0\0" */
+    /*int a , b, index = 0;
+    char holder[100], delimiter[10];
 
-
-    char src[] = "1.2,3.5,4.2";
-    char *first = strtok(src, ",");
-    do
+    printf("Enter the string: ");
+    while ((a = getchar()) != EOF)
     {
-        char *part;
-        /* Nested calls to strtok do not work as desired */
-        printf("[%s]\n", first);
-        part = strtok(first, ".");
-        while (part != NULL)
-        {
-            printf(" [%s]\n", part);
-            part = strtok(NULL, ".");
-        }
-    } while ((first = strtok(NULL, ",")) != NULL);
+        holder[index++] = a;
+    }
+    holder[index] = '\0';
+
+    index = 0;
+
+    printf("Enter the delimiter to be used for tokenizing: ");
+    while ((b = getchar()) != EOF)
+    {
+        delimiter[index++] = b;
+    }
+    delimiter[index] = '\0';
+
+    index = 0;
+
+    printf("The tokenized string is :\n");
+    char *token = strtok(holder, delimiter);
+    while (token != NULL)
+    {
+        printf("%d.\t[%s]\n", ++index, token);
+        token = strtok(NULL, delimiter); // NULL must be passed as the first argument to continue tokenizing the string
+    } */
+
+    /* char src[] = "Hello, this,is ,bittu";
+    char delimiter[] = ",";
+
+    char *first = strtok(src, delimiter);
+    puts(first);
+
+    char *second = strtok(NULL, delimiter);
+    puts(second);
+
+    char *third = strtok(NULL, delimiter);
+    puts(third);
+
+    char *fourth = strtok(NULL, delimiter);
+    puts(fourth);
+    // This shows that strtok() is not re-entrant because it is continued from where it left */
+
+    // char a[] = "0123456789";
+    // char b[5];
+
+#if 0 //buffer overrun
+    strcpy(b, a);
+#endif
+
+#if 0 // best alternative is to use snprintf() to avoid buffer overrun
+    snprintf(b, sizeof(b), "%s", a);
+#endif
+
+#if 0 // it is a buffer overflow checking version of strcpy
+    b[0]='\0';
+    strncat(b, a, sizeof(b) - 1);
+#endif
+
+    char a[] = "hello";
+    char b[20] = "yes";
+    // strcpy(b, a); // only copies: no contatination \
+    snprintf(b,sizeof(b),"%s",a);
+    strncat(b, a, sizeof(b) - 1); // only this will contatinate
+    printf("%s", b);
 }

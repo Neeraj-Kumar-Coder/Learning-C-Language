@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <stdint.h>
+#include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <limits.h>
 #include <stdalign.h>
 #include <stdbool.h>
@@ -210,4 +211,31 @@ int main(void)
 // chapter 6
 int main(void)
 {
+    // int toknum = 0;
+    // char src[] = "Hello,, world!"; /* This string cannot be a const or string literal as this string must be modified */
+    // const char delimiters[] = ", !";
+    // char *token = strtok(src, delimiters);
+    // while (token != NULL)
+    // {
+    //     printf("%d: [%s]\n", ++toknum, token);
+    //     token = strtok(NULL, delimiters); // We have to pass NULL to the first argument to continue tokanizing the string
+    // }
+    // puts(src);
+    // /* source is now "Hello\0, world\0\0" */
+
+
+    char src[] = "1.2,3.5,4.2";
+    char *first = strtok(src, ",");
+    do
+    {
+        char *part;
+        /* Nested calls to strtok do not work as desired */
+        printf("[%s]\n", first);
+        part = strtok(first, ".");
+        while (part != NULL)
+        {
+            printf(" [%s]\n", part);
+            part = strtok(NULL, ".");
+        }
+    } while ((first = strtok(NULL, ",")) != NULL);
 }

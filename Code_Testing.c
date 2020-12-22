@@ -208,6 +208,7 @@ int main(void)
 }
 #endif
 
+#if 0
 // chapter 6
 int main(void)
 {
@@ -259,7 +260,7 @@ int main(void)
     // char a[] = "0123456789";
     // char b[5];
 
-#if 0 //buffer overrun
+#if 0 // buffer overrun / overflow
     strcpy(b, a);
 #endif
 
@@ -272,10 +273,55 @@ int main(void)
     strncat(b, a, sizeof(b) - 1);
 #endif
 
+#if 0 // copies string and concatinating
     char a[] = "hello";
     char b[20] = "yes";
-    // strcpy(b, a); // only copies: no contatination \
-    snprintf(b,sizeof(b),"%s",a);
+    // strcpy(b, a); // only copies: no contatination
+    // snprintf(b,sizeof(b),"%s",a);
     strncat(b, a, sizeof(b) - 1); // only this will contatinate
     printf("%s", b);
+#endif
+}
+#endif
+
+int main(void)
+{
+#if 0
+    // Using strtol() for convertion of string to long integer
+
+    char value[] = "1234567890";
+    char *helpPtr;
+    long answer;
+    answer = strtol(value, &helpPtr, 10);
+    printf("The value of converted string is = %ld", answer);
+#endif
+
+#if 0
+    // Using strtod() for convertion of string to double
+
+    char value[] = "12527";
+    char *helpPtr;
+    double answer;
+    answer = strtod(value, &helpPtr);
+    printf("The value of converted string is = %f", answer);
+#endif
+
+#if 0
+    // Using strtoll() for convertion of string to long long integer
+
+    char value[] = "1234567890";
+    char *helpPtr;
+    long long answer;
+    answer = strtoll(value, &helpPtr, 10);
+    printf("The value of converted string is = %lld", answer);
+#endif
+
+#if 0
+    // Using sprintf() to write formatted double to a string (array)
+
+    char buffer[50];
+    double PI = 3.1415926;
+    sprintf(buffer, "PI = %.7f", PI);
+    printf("%s\n", buffer);
+#endif
 }

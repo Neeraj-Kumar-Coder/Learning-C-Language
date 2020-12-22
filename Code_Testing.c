@@ -317,11 +317,38 @@ int main(void)
 #endif
 
 #if 0
-    // Using sprintf() to write formatted double to a string (array)
+    // Using sprintf() to write formatted data to a string (array)
 
     char buffer[50];
     double PI = 3.1415926;
     sprintf(buffer, "PI = %.7f", PI);
+
+    // Or
+
+    sprintf(buffer, "0.22145");
+
     printf("%s\n", buffer);
+#endif
+
+#if 0
+    // Using sscanf() to read formatted data from a string (array)
+
+    // char sentence[] = "date : 06-06-2012";
+    // char str[50];
+    // int year;
+    // int month;
+    // int day;
+    // sscanf(sentence, "%s : %2d-%2d-%4d", str, &day, &month, &year);
+    // printf("%s -> %02d-%02d-%4d\n", str, day, month, year);
+
+    // printf("str = %s\nday = %d\nmonth = %d\nyear = %d", str, day, month, year);
+
+    char data[] = "Neeraj Kumar = 2020UCA1809";
+    char name_first[15], name_last[15], mid[10];
+    int front, last;
+
+    sscanf(data, "%s %s = %4d%3s%4d", name_first, name_last, &front, mid, &last);
+
+    printf("%s %s = %4d%s%4d\n", name_first, name_last, front, mid, last);
 #endif
 }

@@ -366,4 +366,86 @@ int main(void)
     printf("The position of first occurance of %c is : %td\n", toFind, position1);
     printf("The position of last occurance of %c is : %td\n", toFind, position2);
 #endif
+
+#if 0
+    // Using strcmp() to compare the elements of the string Lexicographically (Alphabetically)
+    char lhs[] = "abc";
+    char rhs[] = "zyx";
+    int result = strcmp(lhs, rhs); // compute comparison once
+    if (result < 0)
+    {
+        printf("%s comes before %s\n", lhs, rhs);
+    }
+    else if (result == 0)
+    {
+        printf("%s equals %s\n", lhs, rhs);
+    }
+    else
+    { // last case: result > 0
+        printf("%s comes after %s\n", lhs, rhs);
+    }
+#endif
+
+#if 0
+    // Using strcasecmp() to compare elements of the string by making each element to its lower case
+    char lhs[] = "ABC";
+    char rhs[] = "abc";
+    int result = strcasecmp(lhs, rhs); // compute comparison once
+    if (result < 0)
+    {
+        printf("%s comes before %s\n", lhs, rhs);
+    }
+    else if (result == 0)
+    {
+        printf("%s equals %s\n", lhs, rhs);
+    }
+    else
+    { // last case: result > 0
+        printf("%s comes after %s\n", lhs, rhs);
+    }
+#endif
+
+#if 0
+    // Using strncmp() to compare atmost n characters of the string
+
+    char lhs[] = "abcdSTRING";
+    char rhs[] = "abcdNOOOO";
+
+    int result = strncmp(lhs, rhs, 4); // This will show that both the strings are equal as the first 4 characters are equal for both
+
+    if (result < 0)
+    {
+        printf("%s comes before %s\n", lhs, rhs);
+    }
+    else if (result == 0)
+    {
+        printf("%s equals %s\n", lhs, rhs);
+    }
+    else
+    { // last case: result > 0
+        printf("%s comes after %s\n", lhs, rhs);
+    }
+#endif
+
+#if 0
+    // Using strncasecmp() to compare atmost n characters of the string by converting them into lower case
+
+    char lhs[] = "abcdSTRING";
+    char rhs[] = "ABCDNOOOO";
+
+    int result = strncasecmp(lhs, rhs, 4); // This will show that both the strings are equal as the first 4 characters are equal for both (after converting to the lower case characters)
+
+    if (result < 0)
+    {
+        printf("%s comes before %s\n", lhs, rhs);
+    }
+    else if (result == 0)
+    {
+        printf("%s equals %s\n", lhs, rhs);
+    }
+    else
+    { // last case: result > 0
+        printf("%s comes after %s\n", lhs, rhs);
+    }
+#endif
 }

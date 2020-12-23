@@ -351,4 +351,19 @@ int main(void)
 
     printf("%s %s = %4d%s%4d\n", name_first, name_last, front, mid, last);
 #endif
+
+#if 0
+    // Using strchr() for finding first occurance and strrchr() for finding the last occurance of a character in a string
+
+    char toFind = 'a';
+    char string[] = "This is a string, not tangled in bass";
+    char *firstOcc = strchr(string, toFind);
+    ptrdiff_t position1 = firstOcc - string;
+
+    char *lastOcc = strrchr(string, toFind);
+    ptrdiff_t position2 = lastOcc - string;
+
+    printf("The position of first occurance of %c is : %td\n", toFind, position1);
+    printf("The position of last occurance of %c is : %td\n", toFind, position2);
+#endif
 }

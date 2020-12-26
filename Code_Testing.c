@@ -284,6 +284,8 @@ int main(void)
 }
 #endif
 
+#if 0
+// Chapter 6 code test
 int main(void)
 {
 #if 0
@@ -448,4 +450,47 @@ int main(void)
         printf("%s comes after %s\n", lhs, rhs);
     }
 #endif
+
+#if 0
+    // Using strtod() to convert string to double
+
+    char value[] = "5263";
+    char *ptr;
+    double result = strtod(value, &ptr);
+    printf("The converted value is = %f\n", result);
+#endif
+
+#if 0
+    // Using strtol() to convert string to long
+
+    char value[] = "5263";
+    char *ptr;
+    long result = strtol(value, &ptr, 10);
+    printf("The converted value is = %ld\n", result);
+#endif
+
+#if 0
+    // Using strtoll() to convert string to long long
+
+    char value[] = "5263";
+    char *ptr;
+    long long result = strtoll(value, &ptr, 10);
+    // long long result = strtoll(value, NULL, 10); // This can also be used in any convertion
+    printf("The converted value is = %lld\n", result);
+#endif
+
+#if 0
+    char str1[] = "geeks for geeks";
+    const char str2[] = "geek";
+    int n = strspn(str1, str2);
+    // int n = strcspn(str1, str2);
+    printf("The length of initial matching segment is : %d", n);
+#endif
+}
+#endif
+
+int main(void)
+{
+    ;
+    return 0;
 }

@@ -2,7 +2,7 @@
     Author : Neeraj Kumar
     Purpose : Morse Code Project (FOR FUN)
     Date : 26/12/2020
-    Time : 07:11 AM
+    Time : 07:11 PM
 */
 // This program can convert the TEXT TO MORSE CODE and also MORSE CODE TO TEXT
 

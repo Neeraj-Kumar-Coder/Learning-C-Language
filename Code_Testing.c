@@ -508,9 +508,9 @@ int main(void)
 int main(void)
 {
     // Compound Literals (This is the same as creating an un-named array of integers)
-    int *p = (int[]){1, 6, 7, -9, 10};   // Without specifing array length (length will taken from number of initializers)
-    int *q = (int[10]){2, 8, 12};        // Compound literal having length of initializer less than array size specified (uninitialized elements are initialized by 0)
-    int *r = (const int[3]){6, 14, -98}; // Read Only compound Literal
+    int *p = (int[]){1, 6, 7, -9, 10};         // Without specifing array length (length will taken from number of initializers)
+    int *q = (int[10]){2, 8, 12};              // Compound literal having length of initializer less than array size specified (uninitialized elements are initialized by 0)
+    const int *r = (const int[3]){6, 14, -98}; // Read Only compound Literal (this compound literal must be stored in a const pointer)
 
     // Compound Literal can be initialized in any way
     int a = 5, b = 2;

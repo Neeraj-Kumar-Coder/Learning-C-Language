@@ -489,8 +489,26 @@ int main(void)
 }
 #endif
 
+#if 0
+// Chapter 7
 int main(void)
 {
-    ;
+    float a1 = 2.303f;
+    double a2 = 2.303;
+    long double a3 = 2.303L;
+    printf("float = %f\ndouble = %f\nlong double = %Lf\n", a1, a2, a3);
+
+    // Testing the escape sequences
+    printf("This is a normal sample text to test the escape sequences");
+    return 0;
+}
+#endif
+
+// Chapter 8
+int main(void)
+{
+    // Compound Literals
+    int *p = (int[]){1, 6, 7, -9, 10}; // This is the same as creating an un-named array of integers
+    printf("First Element is %d\nSecond Element is %d\n", *p, *(p + 1));
     return 0;
 }

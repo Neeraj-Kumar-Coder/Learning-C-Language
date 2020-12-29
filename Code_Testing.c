@@ -507,8 +507,16 @@ int main(void)
 // Chapter 8
 int main(void)
 {
-    // Compound Literals
-    int *p = (int[]){1, 6, 7, -9, 10}; // This is the same as creating an un-named array of integers
+    // Compound Literals (This is the same as creating an un-named array of integers)
+    int *p = (int[]){1, 6, 7, -9, 10};   // Without specifing array length (length will taken from number of initializers)
+    int *q = (int[10]){2, 8, 12};        // Compound literal having length of initializer less than array size specified (uninitialized elements are initialized by 0)
+    int *r = (const int[3]){6, 14, -98}; // Read Only compound Literal
+
+    // Compound Literal can be initialized in any way
+    int a = 5, b = 2;
+    int *s = (int[2]){a + b, a * b + *r};
     printf("First Element is %d\nSecond Element is %d\n", *p, *(p + 1));
+    printf("First q Element is %d\nFourth q Element is %d\n", *q, *(q + 5));
+    printf("Differently initialized compound literal = %d\n", *(s + 1));
     return 0;
 }

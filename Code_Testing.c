@@ -504,6 +504,7 @@ int main(void)
 }
 #endif
 
+#if 0
 // Chapter 8
 int main(void)
 {
@@ -520,3 +521,49 @@ int main(void)
     printf("Differently initialized compound literal = %d\n", *(s + 1));
     return 0;
 }
+#endif
+
+#if 0
+// Chapter 9 code testing
+int main(void)
+{
+#if 0
+    // Bit field example
+    struct sample
+    {
+        unsigned int var1 : 16; // var1 is a variable which can be atmost 16 bits wide
+        unsigned int var2 : 5;  // var2 is a variable which can be atmost 5 bits wide
+    };
+
+    struct sample x;
+    x.var1 = 12;
+
+    // or
+
+    // struct sample *ptr = &x;
+    // ptr->var1 = 12;
+
+    printf("The value of first variable is : %d\n", x.var1);
+#endif
+    struct C
+    {
+        short s;      /* 2 bytes */
+        char c;       /* 1 byte */
+        int bit1 : 1; /* 1 bit */
+        int nib : 4;  /* 4 bits padded up to boundary of 8 bits. Thus 3 bits are padded */
+        int sept : 7; /* 7 Bits septet, padded up to boundary of 32 bits. */
+    };
+    struct B
+    {
+        unsigned char c1 : 1;
+        unsigned char : 2; /* Skips 2 bits in the layout */
+        unsigned char c2 : 2;
+        unsigned char : 0; /* Causes padding up to next container boundary */
+        unsigned char c3 : 4;
+        unsigned char c4 : 1;
+    };
+    printf("%zu\n", sizeof(struct B));
+    printf("%zu\n", sizeof(struct C));
+    return 0;
+}
+#endif

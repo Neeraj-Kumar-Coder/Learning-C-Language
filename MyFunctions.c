@@ -17,6 +17,7 @@ int stringLength(char str[]);                      // Returns the length of the 
 void expand(char s1[], char s2[]);                 // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
 void itob(int n, char s[], int b);                 // This function will convert the integer n into the required base-b notation and save it in string s
 void reverse(char s[]);                            // Reverses a string
+void swap(int *a, int *b);                         // It will swap the two numbers without the use of the third variable
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -382,4 +383,9 @@ void reverse(char s[])
     {
         c = s[i], s[i] = s[j], s[j] = c;
     }
+}
+
+void swap(int *a, int *b)
+{
+    *a = *a + *b, *b = *a - *b, *a = *a - *b;
 }

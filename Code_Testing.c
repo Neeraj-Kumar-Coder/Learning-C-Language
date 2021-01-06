@@ -5,6 +5,20 @@
 #include <limits.h>
 #include <stdalign.h>
 #include <stdbool.h>
+#include <assert.h>
+
+// For chapter 10 code testing
+int arrayCatcher1(int arr[][8], int row, int column) // declaration of 'arr' as multidimensional array must have bounds for all dimensions except the first
+{
+    // return arr[row][column]; // return type 1
+    return *(*(arr + row) + column); // return type 2 (similar for array of any dimension)
+}
+
+// For chapter 10 code testing
+int arrayCatcher2(int (*arr)[8], int row, int column) // declaration 2
+{
+    return *(*(arr + row) + column); // return type 2 (similar for array of any dimension)
+}
 
 #if 0
 void bit_pattern(int u)
@@ -615,5 +629,20 @@ int main(void)
 
     printf("a = %d, b = %d\n", a, b);
 #endif
+
+    // Passing multi-dimensional array to a function
+
+    int MDarray[5][8]; // Multi-Dimensional array
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            MDarray[i][j] = i - j; // Saving the values to the different elements of the array
+        }
+    }
+
+    printf("Value = %i\n", arrayCatcher1(MDarray, 2, 3));
+    printf("Value = %i\n", arrayCatcher2(MDarray, 2, 3));
+
     return 0;
 }

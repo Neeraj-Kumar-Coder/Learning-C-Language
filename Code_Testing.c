@@ -567,3 +567,53 @@ int main(void)
     return 0;
 }
 #endif
+
+// Chapter 10 code testing
+int main(void)
+{
+#if 0
+    // METHODS OF INITILIZATIONS OF THE ARRAY
+
+    // int array[10] = {}; // It initilizes all elements to 0
+    // int array[10] = {1, 4, 2}; // It initilizes first, second and third elements and all others to zero
+    int array[10] = {[5] = 1, 4, [2] = 2}; // It initilizes 5th to 1, 6th to 4 and 2nd to 2, rest all to 0
+    int a = 0;
+    printf("Testing the initilization of array = ");
+    while (a < 10)
+    {
+        printf("%d ", array[a++]);
+        // OR
+        // printf("%d ", a++[array]); // Same result
+    }
+#endif
+
+#if 0
+    // Calculating the array length
+    int arr[] = {2, 5, 9, 8, 4, 5, 1, 2, 8, 5};
+    int length = sizeof(arr) / sizeof(arr[0]);
+    printf("The number of elements in the array is %d\n", length);
+#endif
+
+#if 0
+    // Logic for swaping two numbers
+
+    int a, b;
+    printf("Enter a and b = ");
+    scanf("%d %d", &a, &b);
+
+    // Logic 1
+
+    // a ^= b;
+    // b ^= a;
+    // a ^= b;
+
+    // Logic 2
+
+    // a = a + b;
+    // b = a - b;
+    // a = a - b;
+
+    printf("a = %d, b = %d\n", a, b);
+#endif
+    return 0;
+}

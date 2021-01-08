@@ -5,21 +5,24 @@ enum permissions
 };
 
 // Functions List In This File
-void selfShellSortAscending(int arr[], int size);  // Sort the array in Ascending order
-void selfShellSortDescending(int arr[], int size); // Sort the array in Descending order
-int circleCount(int a, int b);                     // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
-int termTeller(int *arr, int a);                   // It will tell the position of 'a' in array 'arr' (Method 1)
-int matchTeller(char s1[], char s2[]);             // It will tell the first matching character in s1 and s2, returns -1 if no match is found
-void squeeze(char s1[], char s2[]);                // This funtion will remove each character in s1[] that matches any character in the string s2[]
-void textart(char a);                              // The text art function
-int getNum(int x, int v[], int n);                 // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
-int stringLength(char str[]);                      // Returns the length of the string
-void expand(char s1[], char s2[]);                 // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
-void itob(int n, char s[], int b);                 // This function will convert the integer n into the required base-b notation and save it in string s
-void reverse(char s[]);                            // Reverses a string
-void swap(int *a, int *b);                         // It will swap the two numbers without the use of the third variable
-int largedNumberFinder(int arr[], int size);       // It will return the largest number in an array of integers
-int smallestNumberFinder(int arr[], int size);     // It will return the smallest number in an array of integers
+void selfShellSortAscending(int arr[], int size);            // Sort the array in Ascending order
+void selfShellSortDescending(int arr[], int size);           // Sort the array in Descending order
+int circleCount(int a, int b);                               // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
+int termTeller(int *arr, int a);                             // It will tell the position of 'a' in array 'arr' (Method 1)
+int matchTeller(char s1[], char s2[]);                       // It will tell the first matching character in s1 and s2, returns -1 if no match is found
+void squeeze(char s1[], char s2[]);                          // This funtion will remove each character in s1[] that matches any character in the string s2[]
+void textart(char a);                                        // The text art function
+int getNum(int x, int v[], int n);                           // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
+int stringLength(char str[]);                                // Returns the length of the string
+void expand(char s1[], char s2[]);                           // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
+void itob(int n, char s[], int b);                           // This function will convert the integer n into the required base-b notation and save it in string s
+void reverse(char s[]);                                      // Reverses a string
+void swap(int *a, int *b);                                   // It will swap the two numbers without the use of the third variable
+int largedNumberFinder(int arr[], int size);                 // It will return the largest number in an array of integers
+int smallestNumberFinder(int arr[], int size);               // It will return the smallest number in an array of integers
+long long int factorial(long long int a);                    // It will calculate the factorial of provided integer
+long long int permutation(long long int n, long long int r); // It will calculate the permutation nPr
+long long int combination(long long int n, long long int r); // It will calculate the combination nCr
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -415,4 +418,26 @@ int smallestNumberFinder(int arr[], int size)
         }
     }
     return temp;
+}
+
+long long int factorial(long long int a)
+{
+    if (a == 0 || a == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return a * factorial(a - 1);
+    }
+}
+
+long long int permutation(long long int n, long long int r)
+{
+    return (factorial(n) / factorial(n - r));
+}
+
+long long int combination(long long int n, long long int r)
+{
+    return (factorial(n) / (factorial(n - r) * factorial(r)));
 }

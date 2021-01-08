@@ -6,15 +6,23 @@
 */
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 void textart(char a); //Declaration of the text art function
 int main()
 {
-    char a;
+    int t = 3;
     printf("\n******* TEXT ART v1.0 *******\n");
     char name[50];
     printf("Enter your name: ");
     gets(name);
-    for (int i = 0; i <= (strlen(name)); i++) //Loop to print the art of each letter of the string
+    for (int i = 0; i < 3; i++)
+    {
+        sleep(1);
+        printf("%d\n", t--);
+    }
+    sleep(1);
+
+    for (size_t i = 0; i <= (strlen(name)); i++) //Loop to print the art of each letter of the string
     {
         textart(name[i]);
     }

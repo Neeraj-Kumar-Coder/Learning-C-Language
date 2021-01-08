@@ -630,6 +630,7 @@ int main(void)
     printf("a = %d, b = %d\n", a, b);
 #endif
 
+#if 0
     // Passing multi-dimensional array to a function
 
     int MDarray[5][8]; // Multi-Dimensional array
@@ -643,6 +644,24 @@ int main(void)
 
     printf("Value = %i\n", arrayCatcher1(MDarray, 2, 3));
     printf("Value = %i\n", arrayCatcher2(MDarray, 2, 3));
+#endif
 
+#if 0
+    // Accessing the elements of the two dimensional array
+    int arr2D[3][4] = {{1, 2, 3, 4},
+                       {5, 6, 7, 8},
+                       {9, 10, 11, 12}};
+    // printf("The element is this = %d\n", arr2D[1][2]);
+
+    //OR
+
+    printf("The element is this = %d\n", 2 [1 [arr2D]]); // Exclusive accessing of array 😎
+#endif
+
+    // Adding / initializing an array with a specific number
+
+    int array[10];
+    memset(array, 0, sizeof(array)); // Defined in stdlib.h (Reference : https://www.geeksforgeeks.org/memset-c-example/)
+    printf("The value of random element is = %d\n", array[4]);
     return 0;
 }

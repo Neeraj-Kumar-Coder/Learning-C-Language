@@ -1,31 +1,10 @@
 #include <stdio.h>
-
-int factorial(int a);
+#include "MyFunctions.c"
 
 int main(void)
 {
-    int n, sum = 0;
-    printf("Enter the number of terms: ");
-    scanf("%d", &n);
-    for (int i = 1; i <= n; i++)
-    {
-        sum = sum + factorial(i);
-    }
-    printf("The sum of ");
-    for (int i = 1; i <= n; i++)
-    {
-        printf("%d! + ", i);
-    }
-    printf("\b\b= %d\n", sum);
+    int array[] = {5, 6, 2, 1, 4, 5, 7, 120, 456, 84, 68, 46, 4, 4654, 654, 15};
+    printf("The largest number is: %d\n", largedNumberFinder(array, 16));
+    printf("The smallest number is: %d\n", smallestNumberFinder(array, 16));
     return 0;
-}
-
-int factorial(int a)
-{
-    if (a == 0 || a == 1)
-        return 1;
-    else
-    {
-        return a * factorial(a - 1);
-    }
 }

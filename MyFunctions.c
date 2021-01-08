@@ -18,6 +18,8 @@ void expand(char s1[], char s2[]);                 // It will expand the short h
 void itob(int n, char s[], int b);                 // This function will convert the integer n into the required base-b notation and save it in string s
 void reverse(char s[]);                            // Reverses a string
 void swap(int *a, int *b);                         // It will swap the two numbers without the use of the third variable
+int largedNumberFinder(int arr[], int size);       // It will return the largest number in an array of integers
+int smallestNumberFinder(int arr[], int size);     // It will return the smallest number in an array of integers
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -388,4 +390,29 @@ void reverse(char s[])
 void swap(int *a, int *b)
 {
     *a = *a + *b, *b = *a - *b, *a = *a - *b;
+}
+
+int largedNumberFinder(int arr[], int size)
+{
+    int temp = arr[0];
+    for (int i = 0; i < size; i++)
+    {
+        if (temp < arr[i])
+        {
+            temp = arr[i];
+        }
+    }
+    return temp;
+}
+int smallestNumberFinder(int arr[], int size)
+{
+    int temp = arr[0];
+    for (int i = 0; i < size; i++)
+    {
+        if (temp > arr[i])
+        {
+            temp = arr[i];
+        }
+    }
+    return temp;
 }

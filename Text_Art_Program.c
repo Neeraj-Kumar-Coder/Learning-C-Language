@@ -7,14 +7,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#define MAXINPUT 1000
 void textart(char a); //Declaration of the text art function
 int main()
 {
-    int t = 3;
+    int t = 3, z = 0;
     printf("\n******* TEXT ART v1.0 *******\n");
-    char name[50];
+    char name[MAXINPUT], temp;
     printf("Enter your name: ");
-    gets(name);
+    while ((temp = getchar()) != '\n')
+    {
+        name[z++] = temp;
+    }
+    name[z] = '\0';
     for (int i = 0; i < 3; i++)
     {
         sleep(1);

@@ -9,11 +9,11 @@
 int main()
 {
     int b, c, d, e, g, k;
-    float a;
-    char f, h;
+    double a;
+    char h;
     printf("This program will approximate your irrational number\n");
     printf("Enter the number you want the approximate fraction of: ");
-    scanf("%f", &a);
+    scanf("%lf", &a);
     printf("This number is between two (nearest) integers, enter the value of both integers on LHS and RHS\n");
     printf("The LHS integer is : ");
     scanf("%d", &b);

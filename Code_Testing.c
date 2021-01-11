@@ -658,10 +658,30 @@ int main(void)
     printf("The element is this = %d\n", 2 [1 [arr2D]]); // Exclusive accessing of array 😎
 #endif
 
+#if 0
     // Adding / initializing an array with a specific number
 
     int array[10];
     memset(array, 0, sizeof(array)); // Defined in stdlib.h (Reference : https://www.geeksforgeeks.org/memset-c-example/)
     printf("The value of random element is = %d\n", array[4]);
+#endif
+
+#if 0
+    int a, b, c;
+    printf("Enter a: ");
+    scanf("%d", &a);
+    printf("Enter b: ");
+    scanf("%d", &b);
+    printf("Enter c: ");
+    scanf("%d", &c);
+    printf("The largest integer is: %d\n", (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c));
+#endif
+
+#if 0
+    // Comma Operator
+    int x = 42, y = 42;
+    printf("%i\n", (x *= 2, y)); /* Outputs "42". */
+    printf("%d", x);
+#endif
     return 0;
 }

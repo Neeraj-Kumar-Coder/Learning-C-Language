@@ -19,7 +19,6 @@ int main()
     printf("Enter number of characters in your nick name : ");
     scanf("%d", &a);  //taking input from the user for better memory management
     char name[a + 1]; //size of the array is defined by the input of user
-    getchar();
     printf("Enter your nick name : ");
     while ((h = getchar()) != '\n')
     {
@@ -62,7 +61,7 @@ int main()
     else if (d > e)
     {
         printf("***********************************************\n");
-        printf("Congratulations %s !, You are the winner\n");
+        printf("Congratulations %s !, You are the winner\n", name);
         printf("***********************************************\n");
     }
     else

@@ -10,7 +10,7 @@
 void circleCount(int *ptr, int a, int b);
 int termTeller(int *arr, int a);
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     int a, b, c, temp;
     int *ptr;

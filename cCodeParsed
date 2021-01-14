@@ -1,2 +1,414 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <limits.h>
+#include <stdalign.h>
+#include <stdbool.h>
+#include <assert.h>
 
-this is not a comment
+
+int arrayCatcher1(int arr[][8], int row, int column) 
+{
+     return type 1
+    return *(*(arr + row) + column); 
+}
+
+
+int arrayCatcher2(int (*arr)[8], int row, int column) 
+{
+    return *(*(arr + row) + column); 
+}
+
+#if 0
+void bit_pattern(int u)
+{
+    int i, x, word;
+    unsigned mask = 1;
+
+    word = CHAR_BIT * sizeof(int);
+    mask = mask << (word - 1); 
+    for (i = 1; i <= word; i++)
+    {
+        x = (u & mask) ? 1 : 0; 
+        printf("%d", x);        
+        mask >>= 1;             
+    }
+}
+#endif
+
+
+
+#if 0
+int main(void)
+{
+#if 0 
+    printf("This code should not be executed\n");
+#endif
+    
+    puts("This is always executed");
+    puts("Checking if new line prints!");
+    return 0;
+}
+#endif
+
+#if 0
+int main(void)
+{
+    
+    
+    
+    
+    "%c\n",
+    "Address = %d, %d\n",
+     Integer exactly 8 bit wide (for unsigned)
+     Integer exactly 8 bit wide (for signed)
+    "%d\n%d\n",
+
+    
+    * decimal constant (base10) */
+    * octal constant (base8) */
+    * hexadecimal constants (base16) */
+    * (letters 'a' through 'f' (case insensitive) represent 10 through 15) */
+    "d = %d\no = %d\nx = %d\nX = %d\n",
+
+    char *name[10];   
+    char(*place)[10]; 
+    char arr[10] = "Test";
+    
+    place = &arr;
+    printf("%c", *place[0]);
+}
+#endif
+
+#if 0
+
+int main(void)
+{
+    
+    * exactly 32-bits wide */
+    * exactly 8-bits wide */
+    * exactly 64 bit in two's complement representation */
+    * how it works (Format %u ) */
+    
+
+    "%llu",
+
+    
+     This will not work as the signed bit is destroyed
+    "%u",
+
+    "mod";
+    "mod"; string literal
+     undefined behaviour for changing string literal. Best is to use char const *c
+     Produce undesired output bcoz of absense of space for the null character
+    char *str="hi " "I am " "Neeraj " "Kumar "; 
+    puts(str);
+
+#if 0
+    printf("Minimum value of signed char is : %d\n", SCHAR_MIN);
+    printf("Maximum value of signed char is : %d\n", SCHAR_MAX);
+    printf("Maximum value of unsigned char is : %d\n", UCHAR_MAX);
+    printf("Minimum value of char is : %d\n", CHAR_MIN); 
+    printf("Maximum value of char is : %d\n", CHAR_MAX); 
+    printf("Maximum value of short integer is: %d\n", SHRT_MAX);
+    printf("Minimum value of short integer is: %d\n", SHRT_MIN);
+    printf("Maximum value of unsigned short integer is: %d\n", USHRT_MAX);
+    printf("Maximum value of integer is : %d\n", INT_MAX);
+    printf("Minimum value of integer is : %d\n", INT_MIN);
+    printf("Maximum value of unsigned integer is : %u\n", UINT_MAX);
+    printf("Maximum value of long integer is : %ld\n", LONG_MAX);
+    printf("Minimum value of long integer is : %ld\n", LONG_MIN);
+    printf("Maximum value of unsigned long integer is : %lu\n", ULONG_MAX);
+    printf("Maximum value of long long integer is : %lld\n", LLONG_MAX);
+    printf("Minimum value of long long integer is : %lld\n", LLONG_MIN);
+    printf("Maximum value of unsigned long long integer is : %llu", ULLONG_MAX);
+#endif
+}
+#endif
+
+#if 0
+
+struct Code_Testing
+{
+    int x;
+    int y;
+};
+#endif
+
+#if 0
+int main(void)
+{
+    
+    "Enter a, b, c here : ")
+    "%d %d %d",
+    "The largest number is %d\n", Nesting of conditional operator
+
+    "%d\n",
+    
+    
+    "%i\n",
+    "%i\n",
+
+    struct Code_Testing a;
+    struct Code_Testing *pointer = &a;
+    
+    pointer->x = 10;
+    pointer->y = 998;
+    printf("%i\n%i\n", a.x, a.y);
+    ptrdiff_t diff;
+    int *ptr1, *ptr2;
+    int a = 7, b = 95;
+    ptr1 = &a;
+    ptr2 = &b;
+    diff = ptr1 - ptr2;
+    printf("The difference between the pointers location difference is: %ti", diff);
+    printf("The size of int is : %llu\n", sizeof(int));
+    printf("The alignment of int is : %zu\n", alignof(int));
+    printf("The size of char is : %llu\n", sizeof(char));
+    printf("The alignment of char is : %zu\n", alignof(char));
+    printf("The size of short is : %llu\n", sizeof(short));
+    printf("The alignment of short is : %zu\n", alignof(short));
+    printf("The size of long is : %llu\n", sizeof(long));
+    printf("The alignment of long is : %zu\n", alignof(long));
+    printf("The size of long long is : %llu\n", sizeof(long long));
+    printf("The alignment of long long is : %zu\n", alignof(long long));
+}
+#endif
+
+
+#if 0
+int main(void)
+{
+     _Bool a, b;
+     or
+    
+
+    
+    
+    
+    
+    "This will print")
+    
+     if (b == false)
+     or
+    
+    
+    "This will also print")
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    "Let's see if this will print")
+    
+    
+    
+    "Also testing this")
+    
+
+    
+    
+    
+    "allocation problems")
+    
+    
+    
+}
+#endif
+
+#if 0
+
+int main(void)
+{
+    "Enter the string: ")"Enter the delimiter to be used for tokenizing: ")"The tokenized string is :\n")"%d.\t[%s]\n",
+
+
+    "Hello, this,is ,bittu";",";"0123456789";
+
+
+"%s",
+
+"hello";"yes";"%s",
+
+"%s",
+
+"1234567890";"The value of converted string is = %ld",
+"12527";"The value of converted string is = %f",
+"1234567890";"The value of converted string is = %lld",
+"PI = %.7f",
+"0.22145")"%s\n",
+"date : 06-06-2012";
+
+
+
+
+"%s : %2d-%2d-%4d",
+"%s -> %02d-%02d-%4d\n",
+"str = %s\nday = %d\nmonth = %d\nyear = %d",
+"Neeraj Kumar = 2020UCA1809";"%s %s = %4d%3s%4d","%s %s = %4d%s%4d\n",
+"This is a string, not tangled in bass";"The position of first occurance of %c is : %td\n","The position of last occurance of %c is : %td\n",
+"abc";"zyx";
+"%s comes before %s\n","%s equals %s\n",
+"%s comes after %s\n",
+"ABC";"abc";
+"%s comes before %s\n","%s equals %s\n",
+"%s comes after %s\n",
+"abcdSTRING";"abcdNOOOO";
+"%s comes before %s\n","%s equals %s\n",
+"%s comes after %s\n",
+"abcdSTRING";"ABCDNOOOO";
+"%s comes before %s\n","%s equals %s\n",
+"%s comes after %s\n",
+"5263";"The converted value is = %f\n",
+"5263";"The converted value is = %ld\n",
+"5263";"The converted value is = %lld\n","geeks for geeks";"geek";
+"The length of initial matching segment is : %d",
+"float = %f\ndouble = %f\nlong double = %Lf\n",
+"This is a normal sample text to test the escape sequences")
+
+
+
+
+
+"First Element is %d\nSecond Element is %d\n","First q Element is %d\nFourth q Element is %d\n","Differently initialized compound literal = %d\n",
+
+
+
+
+
+
+"The value of first variable is : %d\n",/ 2 bytes */
+        char c;       
+        int bit1 : 1; 
+        int nib : 4;  
+        int sept : 7; 
+    };
+    struct B
+    {
+        unsigned char c1 : 1;
+        unsigned char : 2; 
+        unsigned char c2 : 2;
+        unsigned char : 0; 
+        unsigned char c3 : 4;
+        unsigned char c4 : 1;
+    };
+    printf("%zu\n", sizeof(struct B));
+    printf("%zu\n", sizeof(struct C));
+    return 0;
+}
+#endif
+
+
+int main(void)
+{
+#if 0
+    
+
+     It initilizes all elements to 0
+     It initilizes first, second and third elements and all others to zero
+    int array[10] = {[5] = 1, 4, [2] = 2}; 
+    int a = 0;
+    printf("Testing the initilization of array = ");
+    while (a < 10)
+    {
+        printf("%d ", array[a++]);
+        
+        "%d ", Same result
+    }
+#endif
+
+#if 0
+    
+    int arr[] = {2, 5, 9, 8, 4, 5, 1, 2, 8, 5};
+    int length = sizeof(arr) / sizeof(arr[0]);
+    printf("The number of elements in the array is %d\n", length);
+#endif
+
+#if 0
+    
+
+    int a, b;
+    printf("Enter a and b = ");
+    scanf("%d %d", &a, &b);
+
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    printf("a = %d, b = %d\n", a, b);
+#endif
+
+#if 0
+    
+
+    int MDarray[5][8]; 
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            MDarray[i][j] = i - j; 
+        }
+    }
+
+    printf("Value = %i\n", arrayCatcher1(MDarray, 2, 3));
+    printf("Value = %i\n", arrayCatcher2(MDarray, 2, 3));
+#endif
+
+#if 0
+    
+    int arr2D[3][4] = {{1, 2, 3, 4},
+                       {5, 6, 7, 8},
+                       {9, 10, 11, 12}};
+    "The element is this = %d\n",
+
+    
+
+    printf("The element is this = %d\n", 2 [1 [arr2D]]); 
+#endif
+
+#if 0
+     initializing an array with a specific number
+
+    int array[10];
+    memset(array, 0, sizeof(array)); www.geeksforgeeks.org/memset-c-example/)
+    printf("The value of random element is = %d\n", array[4]);
+#endif
+
+#if 0
+    int a, b, c;
+    printf("Enter a: ");
+    scanf("%d", &a);
+    printf("Enter b: ");
+    scanf("%d", &b);
+    printf("Enter c: ");
+    scanf("%d", &c);
+    printf("The largest integer is: %d\n", (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c));
+#endif
+
+#if 0
+    
+    int x = 42, y = 42;
+    printf("%i\n", (x *= 2, y)); "42".
+    printf("%d", x);
+#endif
+
+    char str1[] = "this!is!not a! game!";
+    char str2[] = "!";
+    int len = strspn(str2, str1);
+    printf("len = %d\n", len);
+    return 0;
+}

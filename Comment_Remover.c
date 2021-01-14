@@ -9,7 +9,7 @@
 #define YES 1
 #define NO 0
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     int a, invt_comma = 0, permission = YES, comment = 0, star_comment = 0;
     FILE *ptr = NULL;

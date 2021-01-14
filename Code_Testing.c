@@ -683,5 +683,18 @@ int main(void)
     printf("%i\n", (x *= 2, y)); /* Outputs "42". */
     printf("%d", x);
 #endif
+
+#if 0
+    // Setting precision during runtime
+
+    float a = 2.365474;
+    int b = 9223, c, d;
+    printf("Enter the precision for float : ");
+    scanf("%d", &c);
+    printf("The value is %.*f\n", c, a);
+    printf("Enter the precision for int type : ");
+    scanf("%d", &d);
+    printf("The integer value is : <<%*d>>\n", d, b);
+#endif
     return 0;
 }

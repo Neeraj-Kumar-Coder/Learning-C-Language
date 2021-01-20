@@ -4,7 +4,7 @@ enum permissions
     YES
 };
 
-// Functions List In This File
+// List of functions in this file
 void selfShellSortAscending(int arr[], int size);            // Sort the array in Ascending order
 void selfShellSortDescending(int arr[], int size);           // Sort the array in Descending order
 int circleCount(int a, int b);                               // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
@@ -23,6 +23,7 @@ int smallestNumberFinder(int arr[], int size);               // It will return t
 long long int factorial(long long int a);                    // It will calculate the factorial of provided integer
 long long int permutation(long long int n, long long int r); // It will calculate the permutation nPr
 long long int combination(long long int n, long long int r); // It will calculate the combination nCr
+float determinant(int size, float arr[][size]);              // It will calculate the determinant of square matrix of any size
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -440,4 +441,40 @@ long long int permutation(long long int n, long long int r)
 long long int combination(long long int n, long long int r)
 {
     return (factorial(n) / (factorial(n - r) * factorial(r)));
+}
+
+float determinant(int size, float arr[][size])
+{
+    float value_of_determinant = 0.0;
+    int a, b;
+    if (size == 1)
+    {
+        return arr[0][0];
+    }
+    else
+    {
+        float helpPtr[size - 1][size - 1]; // Creating an Array to store parsed elements
+
+        for (int column = 0; column < size; column++)
+        {
+            // Filling the parsed array
+            a = 0, b = 0;
+            for (int i = 1; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (j != column)
+                    {
+                        helpPtr[a][b] = arr[i][j];
+                        b++;
+                        (b == (size - 1)) ? (a++, b = 0) : (b = b);
+                    }
+                }
+            }
+            // Filling completed
+            value_of_determinant += pow(-1, column) * arr[0][column] * determinant(size - 1, helpPtr);
+        }
+    }
+
+    return value_of_determinant;
 }

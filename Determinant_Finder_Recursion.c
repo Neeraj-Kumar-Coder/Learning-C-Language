@@ -16,13 +16,13 @@ int main(void)
     int size;
     printf("Enter the size of square matrix you want to create: ");
     scanf("%d", &size);
-    float array_three_dimension[size][size], determinant_value;
+    float two_dimensional_array[size][size], determinant_value;
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
             printf("Enter the (%d, %d) element of the matrix: ", i, j);
-            scanf("%f", &array_three_dimension[i][j]);
+            scanf("%f", &two_dimensional_array[i][j]);
         }
     }
     printf("\nTHE MATRIX YOU ENTERED IS\n\n");
@@ -30,12 +30,12 @@ int main(void)
     {
         for (int j = 0; j < size; j++)
         {
-            printf("%f\t", array_three_dimension[i][j]);
+            printf("%f\t", two_dimensional_array[i][j]);
         }
         printf("\n");
     }
 
-    determinant_value = determinant(size, array_three_dimension);
+    determinant_value = determinant(size, two_dimensional_array);
     printf("\nThe value of the determinant is = %f\n", determinant_value);
     return 0;
 }
@@ -64,7 +64,7 @@ float determinant(int size, float arr[][size])
                     {
                         helpPtr[a][b] = arr[i][j];
                         b++;
-                        (b == (size - 1)) ? (a++, b = 0) : (b = b);
+                        (b == (size - 1)) ? (a++, b = 0) : (b = b); // For iteration of the parsed array
                     }
                 }
             }

@@ -215,7 +215,7 @@ int main(void)
     // double *A = malloc(1 * sizeof *A);
     // if (!A)
     // {
-    //     perror("allocation problems");
+    // perror("allocation problems");
     //     exit(EXIT_FAILURE);
     // }
     // free(A);

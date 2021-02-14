@@ -1,6 +1,12 @@
 {
     "files.associations": {
         "atomic": "cpp",
-        "cstdint": "cpp"
+        "cstdint": "cpp",
+        "stdio.h": "c",
+        "corecrt_stdio_config.h": "c",
+        "stdalign.h": "c",
+        "cstdlib": "c",
+        "cstdio": "c",
+        "time.h": "c"
     }
 }

@@ -18,7 +18,7 @@ int main(void)
     int choice;
     printf("Enter the conversion you want to perform:\n1. Text to Morse Code\n2. Morse Code to Text\nINPUT : ");
     scanf("%d", &choice);
-    getchar();
+    fflush(stdin);
 
     if (choice == 1)
     {
@@ -224,7 +224,7 @@ void text_to_morse_code(char a)
     }
     else
     {
-        putchar(a);
+        printf("%c ", a);
     }
 }
 

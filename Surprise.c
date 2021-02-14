@@ -1,147 +1,98 @@
-#ifndef MyFunction
-#define MyFunction
-#include <math.h>
-#include <time.h>
-enum permissions
-{
-    NO,
-    YES
-};
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+#include <unistd.h>
+#define MAXSIZE 100
 
-// List of functions in this file
-void selfShellSortAscending(int arr[], int size);            // Sort the array in Ascending order
-void selfShellSortDescending(int arr[], int size);           // Sort the array in Descending order
-int circleCount(int a, int b);                               // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
-int termTeller(int *arr, int a);                             // It will tell the position of 'a' in array 'arr' (Method 1)
-int matchTeller(char s1[], char s2[]);                       // It will tell the first matching character in s1 and s2, returns -1 if no match is found
-void squeeze(char s1[], char s2[]);                          // This funtion will remove each character in s1[] that matches any character in the string s2[]
-void textart(char a);                                        // The text art function
-int getNum(int x, int v[], int n);                           // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
-int stringLength(char str[]);                                // Returns the length of the string
-void expand(char s1[], char s2[]);                           // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
-void itob(int n, char s[], int b);                           // This function will convert the integer n into the required base-b notation and save it in string s
-void reverse(char s[]);                                      // Reverses a string
-void swap(int *a, int *b);                                   // It will swap the two numbers without the use of the third variable
-int largedNumberFinder(int arr[], int size);                 // It will return the largest number in an array of integers
-int smallestNumberFinder(int arr[], int size);               // It will return the smallest number in an array of integers
-long long int factorial(long long int a);                    // It will calculate the factorial of provided integer
-long long int permutation(long long int n, long long int r); // It will calculate the permutation nPr
-long long int combination(long long int n, long long int r); // It will calculate the combination nCr
-float determinant(int size, float arr[][size]);              // It will calculate the determinant of square matrix of any size
-void delay(int number_of_seconds);                           // It will create a time delay in the code
-void loading(void);                                          // It will create a loading animation in the terminal
+void textart(char a);
 
-// Function code starts here
-void selfShellSortAscending(int arr[], int size)
+int main(void)
 {
-    int temp;
-    for (int i = 0; i < size; i++)
+    char a, password[MAXSIZE];
+    int i = 0;
+    printf("Enter the password here : ");
+    fflush(stdin);                               // To flush the newline buffer
+    while ((a = getch()) != '\r' && i < MAXSIZE) // Used the condition '\r' because the enter key will take the cursor to the start of the next line
     {
-        for (int j = i + 1; j < size; j++)
+        password[i++] = a;
+        if (a == '\b')
         {
-            if (arr[i] > arr[j])
-            {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-}
-
-void selfShellSortDescending(int arr[], int size)
-{
-    int temp;
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = i + 1; j < size; j++)
-        {
-            if (arr[i] < arr[j])
-            {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-}
-
-int circleCount(int a, int b)
-{
-    int i;
-    for (i = 0; i < b; i++)
-    {
-        if (b <= a * i)
-        {
-            break;
-        }
-    }
-    return (b + a - 1 - a * i);
-}
-
-int termTeller(int *arr, int a)
-{
-    int b = 0, i = 0;
-    while (arr[i] != a)
-    {
-        b++;
-        i++;
-    }
-    return b;
-}
-
-int matchTeller(char s1[], char s2[])
-{
-    for (int i = 0; i < stringLength(s1); i++)
-    {
-        for (int j = 0; j < stringLength(s2); j++)
-        {
-            if (s1[i] == s2[j])
-            {
-                return i + 1;
-            }
-        }
-    }
-    return -1;
-}
-
-void squeeze(char s1[], char s2[])
-{
-    int match = NO, k = 0;
-
-    for (int i = 0; i < stringLength(s1); i++)
-    {
-        for (int j = 0; j < stringLength(s2); j++)
-        {
-            if (s1[i] == s2[j])
-            {
-                match = YES;
-            }
-        }
-
-        if (match == NO)
-        {
-            s1[k++] = s1[i];
+            printf("\b \b"); // Prints the backspace character and removes the last '*'
         }
         else
         {
-            match = NO;
+            printf("*");
         }
     }
+    password[i] = '\0';
 
-    s1[k] = '\0';
-}
-
-int stringLength(char str[])
-{
-    int length = 0;
-
-    while (str[length] != '\0')
+    if (!strcmp(password, "ilyr143"))
     {
-        ++length;
+        printf("\nBadhiya! Sahi Password daale ho (LOL)!!\n");
+        char name[10];
+        char message[] = "I love you rinki very much";
+        printf("\nApna naam likho yahaan jaldiiiiiiiii: ");
+        scanf("%s", name);
+        if (!strcasecmp(name, "rinki"))
+        {
+            printf("\nYou are the one...\nEk chota sa gift hai ye aapke liye\n");
+            sleep(1);
+            printf("\n\n############### WELCOME ###############\n\n");
+            sleep(1);
+            printf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c", 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
+            sleep(3);
+            printf("\nPyaar sirf tumse heen krta hoon main");
+            sleep(3);
+            printf("\nNa jaane kyon kehne se darta hoon main");
+            sleep(3);
+            printf("\nTumhaare bin mein ek pal bhi reh heen nhi skta");
+            sleep(3);
+            printf("\nTum ho meri kamjori ye mein keh bhi nhi skta...\n");
+            sleep(1);
+            printf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c", 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
+            sleep(2);
+            printf("\n\nI want to say something to you:\n");
+            sleep(3);
+            printf("\nuhu uhu....\n");
+            for (int i = 0; i < 3; i++)
+            {
+                sleep(1);
+                printf("%d\n", 3 - i);
+            }
+            sleep(1);
+
+            for (size_t i = 0; i < strlen(message); i++)
+            {
+                textart(message[i]);
+            }
+            sleep(1);
+            printf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c", 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
+            sleep(1);
+            printf("\n\t\tYOU ARE MY LIFE\n\n");
+            sleep(2);
+            printf("________%c%c%c%c%c%c%c%c%c%c%c___________%c%c%c%c%c%c%c%c%c%c%c%c_________\n______%c%c%c%c%c%c%c%c_____%c%c%c%c%c___%c%c%c%c%c%c_____%c%c%c%c%c%c%c______\n____%c%c%c%c%c%c%c_____________%c%c%c______________%c%c%c%c%c_____\n___%c%c%c%c%c%c%c_______________%c_________________%c%c%c%c____\n__%c%c%c%c%c%c____________________________________%c%c%c%c___\n__%c%c%c%c%c_____________________________________ %c%c%c%c__\n_%c%c%c%c%c______________________________________%c%c%c%c%c__\n_%c%c%c%c%c_____________________________________%c%c%c%c%c%c__\n__%c%c%c%c%c%c_________________________________%c%c%c%c%c%c%c___\n___%c%c%c%c%c%c%c______________________________%c%c%c%c%c%c%c____\n_____%c%c%c%c%c%c____________________________%c%c%c%c%c%c______\n_______%c%c%c%c%c%c________________________%c%c%c%c%c%c________\n__________%c%c%c%c%c_____________________%c%c%c%c___________\n_____________%c%c%c%c_________________%c%c%c%c_____________\n_______________%c%c%c%c_____________%c%c%c________________\n_________________%c%c%c_________%c%c%c___________________\n_________________ __%c%c%c_____%c%c_____________________\n______________________%c%c__%c%c_______________________\n________________________%c%c_________________________\n", 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
+            sleep(1);
+            printf("\n\t\tI MISS YOU VERY MUCH\n");
+            sleep(1);
+            printf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c", 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
+            printf("\nScroll up to read\nPress any key to exit...\n");
+            getch();
+        }
+        else
+        {
+            printf("\nCongratulations on entering the correct password.\nBut!, You are not the one!!\n");
+            printf("\nPress any key to exit...\n");
+            getch();
+        }
+    }
+    else
+    {
+        printf("\n\nIncorrect Password!!\nEnter the correct password in on-go\n");
+        printf("\nPress any key to exit...\n");
+        getch();
     }
 
-    return length;
+    return 0;
 }
 
 void textart(char a)
@@ -295,226 +246,3 @@ void textart(char a)
         printf("---#########---\n---##-----##---\n---##-----##---\n---##-----##---\n---#########---\n----------##---\n----------##---\n----------##---\n---#########---\n\n");
     }
 }
-
-int getNum(int x, int v[], int n)
-{
-    int low, high, mid;
-    low = 0;
-    high = n - 1;
-
-    while (low <= high)
-    {
-        mid = (low + high) / 2;
-        if (x < v[mid])
-        {
-            high = mid - 1;
-        }
-        else if (x > v[mid])
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            return mid;
-        }
-    }
-
-    return -1;
-}
-
-void expand(char s1[], char s2[])
-{
-    char c;
-    int i, j;
-    i = j = 0;
-    while ((c = s1[i++]) != '\0')
-    {
-        if (s1[i] == '-' && s1[i + 1] >= c)
-        {
-            i++;
-            while (c < s1[i])
-            {
-                s2[j++] = c++;
-            }
-        }
-        else if (s1[i] == '-' && s1[i + 1] <= c)
-        {
-            i++;
-            while (c > s1[i])
-            {
-                s2[j++] = c--;
-            }
-        }
-        else
-        {
-            s2[j++] = c;
-        }
-    }
-    s2[j] = '\0';
-}
-
-void itob(int n, char s[], int b)
-{
-    int i = 0;
-    if (b >= 0 && b <= 10 && n > 0)
-    {
-        do
-        {
-            s[i++] = n % b + '0';
-        } while ((n /= b) != 0);
-        s[i] = '\0';
-        reverse(s);
-    }
-    else if (b == 16 && b > 0)
-    {
-        do
-        {
-            if ((n % b) > 10)
-            {
-                s[i++] = (n % b) + 55;
-            }
-            else
-            {
-                s[i++] = n % b + '0';
-            }
-
-        } while ((n /= b) != 0);
-        s[i] = '\0';
-        reverse(s);
-    }
-    else
-    {
-        s[i++] = 'N', s[i++] = '/', s[i++] = 'A', s[i] = '\0';
-    }
-}
-
-void reverse(char s[])
-{
-    int c, i, j;
-    for (i = 0, j = stringLength(s) - 1; i < j; i++, j--)
-    {
-        c = s[i], s[i] = s[j], s[j] = c;
-    }
-}
-
-void swap(int *a, int *b)
-{
-    *a = *a + *b, *b = *a - *b, *a = *a - *b;
-}
-
-int largedNumberFinder(int arr[], int size)
-{
-    int temp = arr[0];
-    for (int i = 0; i < size; i++)
-    {
-        if (temp < arr[i])
-        {
-            temp = arr[i];
-        }
-    }
-    return temp;
-}
-int smallestNumberFinder(int arr[], int size)
-{
-    int temp = arr[0];
-    for (int i = 0; i < size; i++)
-    {
-        if (temp > arr[i])
-        {
-            temp = arr[i];
-        }
-    }
-    return temp;
-}
-
-long long int factorial(long long int a)
-{
-    if (a == 0 || a == 1)
-    {
-        return 1;
-    }
-    else
-    {
-        return a * factorial(a - 1);
-    }
-}
-
-long long int permutation(long long int n, long long int r)
-{
-    return (factorial(n) / factorial(n - r));
-}
-
-long long int combination(long long int n, long long int r)
-{
-    return (factorial(n) / (factorial(n - r) * factorial(r)));
-}
-
-float determinant(int size, float arr[][size])
-{
-    float value_of_determinant = 0.0;
-    int a, b;
-    if (size == 1)
-    {
-        return arr[0][0];
-    }
-    else
-    {
-        float helpPtr[size - 1][size - 1]; // Creating an Array to store parsed elements
-
-        for (int column = 0; column < size; column++)
-        {
-            // Filling the parsed array
-            a = 0, b = 0;
-            for (int i = 1; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    if (j != column)
-                    {
-                        helpPtr[a][b] = arr[i][j];
-                        b++;
-                        (b == (size - 1)) ? (a++, b = 0) : (b = b);
-                    }
-                }
-            }
-            // Filling completed
-            value_of_determinant += pow(-1, column) * arr[0][column] * determinant(size - 1, helpPtr);
-        }
-    }
-
-    return value_of_determinant;
-}
-
-void delay(int number_of_seconds)
-{
-    // Converting time into milli_seconds
-    int milli_seconds = 1000 * number_of_seconds;
-
-    // Storing start time
-    clock_t start_time = clock();
-
-    // looping till required time is not achieved
-    while (clock() < start_time + milli_seconds)
-        ;
-}
-
-void loading(void)
-{
-    printf("Loading...\n");
-    sleep(1);
-    printf("[--------------------] :\x1b[s%2d%%\r", 0); // The \x1b[s is used to store the current cursor position
-    for (int i = 0; i < 20; i++)
-    {
-        printf("[");
-        for (int j = 0; j < i + 1; j++)
-        {
-            printf("#");
-        }
-        printf("\x1b[u%2d%%\r", 5 * (i + 1)); // The \x1b[u is used to retrieve the position of the cursor stored earlier
-        if (i == 5 || i == 10 || i == 15)
-            continue;
-        sleep(1);
-    }
-    sleep(1);
-}
-#endif

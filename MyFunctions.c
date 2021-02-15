@@ -9,27 +9,29 @@ enum permissions
 };
 
 // List of functions in this file
-void selfShellSortAscending(int arr[], int size);            // Sort the array in Ascending order
-void selfShellSortDescending(int arr[], int size);           // Sort the array in Descending order
-int circleCount(int a, int b);                               // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
-int termTeller(int *arr, int a);                             // It will tell the position of 'a' in array 'arr' (Method 1)
-int matchTeller(char s1[], char s2[]);                       // It will tell the first matching character in s1 and s2, returns -1 if no match is found
-void squeeze(char s1[], char s2[]);                          // This funtion will remove each character in s1[] that matches any character in the string s2[]
-void textart(char a);                                        // The text art function
-int getNum(int x, int v[], int n);                           // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
-int stringLength(char str[]);                                // Returns the length of the string
-void expand(char s1[], char s2[]);                           // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
-void itob(int n, char s[], int b);                           // This function will convert the integer n into the required base-b notation and save it in string s
-void reverse(char s[]);                                      // Reverses a string
-void swap(int *a, int *b);                                   // It will swap the two numbers without the use of the third variable
-int largedNumberFinder(int arr[], int size);                 // It will return the largest number in an array of integers
-int smallestNumberFinder(int arr[], int size);               // It will return the smallest number in an array of integers
-long long int factorial(long long int a);                    // It will calculate the factorial of provided integer
-long long int permutation(long long int n, long long int r); // It will calculate the permutation nPr
-long long int combination(long long int n, long long int r); // It will calculate the combination nCr
-float determinant(int size, float arr[][size]);              // It will calculate the determinant of square matrix of any size
-void delay(int number_of_seconds);                           // It will create a time delay in the code
-void loading(void);                                          // It will create a loading animation in the terminal
+void selfShellSortAscending(int arr[], int size);                                    // Sort the array in Ascending order
+void selfShellSortDescending(int arr[], int size);                                   // Sort the array in Descending order
+int circleCount(int a, int b);                                                       // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
+int termTeller(int *arr, int a);                                                     // It will tell the position of 'a' in array 'arr' (Method 1)
+int matchTeller(char s1[], char s2[]);                                               // It will tell the first matching character in s1 and s2, returns -1 if no match is found
+void squeeze(char s1[], char s2[]);                                                  // This funtion will remove each character in s1[] that matches any character in the string s2[]
+void textart(char a);                                                                // The text art function
+int getNum(int x, int v[], int n);                                                   // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
+int stringLength(char str[]);                                                        // Returns the length of the string
+void expand(char s1[], char s2[]);                                                   // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
+void itob(int n, char s[], int b);                                                   // This function will convert the integer n into the required base-b notation and save it in string s
+void reverse(char s[]);                                                              // Reverses a string
+void swap(int *a, int *b);                                                           // It will swap the two numbers without the use of the third variable
+int largedNumberFinder(int arr[], int size);                                         // It will return the largest number in an array of integers
+int smallestNumberFinder(int arr[], int size);                                       // It will return the smallest number in an array of integers
+long long int factorial(long long int a);                                            // It will calculate the factorial of provided integer
+long long int permutation(long long int n, long long int r);                         // It will calculate the permutation nPr
+long long int combination(long long int n, long long int r);                         // It will calculate the combination nCr
+float determinant(int size, float arr[][size]);                                      // It will calculate the determinant of square matrix of any size
+void adjoint(int size, float original_matrix[][size], float adjoint_matrix[][size]); // It will find the adjoint of the matrix of any size
+void matrix_inverse(int size, float matrix[][size], float inverse_matrix[][size]);   // It will find the inverse of the matrix of any size
+void delay(int number_of_seconds);                                                   // It will create a time delay in the code
+void loading(void);                                                                  // It will create a loading animation in the terminal
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -483,6 +485,45 @@ float determinant(int size, float arr[][size])
     }
 
     return value_of_determinant;
+}
+
+void adjoint(int size, float original_matrix[][size], float adjoint_matrix[][size])
+{
+    float temp[size - 1][size - 1];
+    int a, b;
+    for (int i = 0; i < size; i++) // 4 Nested loops to fill the parsed elements of the matrix
+    {
+        for (int j = 0; j < size; j++)
+        {
+            a = 0, b = 0;
+            for (int row = 0; row < size; row++)
+            {
+                for (int column = 0; column < size; column++)
+                {
+                    if (row != i && column != j)
+                    {
+                        temp[a][b] = original_matrix[row][column];
+                        ++b;
+                        (b == (size - 1)) ? (++a, b = 0) : (b = b); // Conditional statement to iterate the temp matrix
+                    }
+                }
+            }
+            adjoint_matrix[j][i] = pow(-1, i + j) * determinant(size - 1, temp); // filling adjoint matrix by complement rule
+        }
+    }
+}
+
+void matrix_inverse(int size, float matrix[][size], float inverse_matrix[][size])
+{
+    adjoint(size, matrix, inverse_matrix);
+    float value_of_determinant = determinant(size, matrix);
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            inverse_matrix[i][j] /= value_of_determinant;
+        }
+    }
 }
 
 void delay(int number_of_seconds)

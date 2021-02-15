@@ -1,53 +1,127 @@
 #include <stdio.h>
-#include <string.h>
-#define TRUE 1
-#define FALSE 0
+#include <math.h>
 
-int checkAB(char string[]);
+void adjoint(int size, float matrix[][size], float adjoint_matrix[][size]);
+float determinant(int size, float arr[][size]);
+void matrix_inverse(int size, float matrix[][size], float inverse_matrix[][size]);
 
 int main(void)
 {
-    char string[] = "abbaaabb";
-    int result = checkAB(string);
-    (result == TRUE) ? printf("The string is according to rule\n") : printf("The string is not according to rule\n");
+    int size;
+    printf("Enter the size of matrix you want to create: ");
+    scanf("%d", &size);
+    float original[size][size];
+    float adjointMat[size][size];
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            printf("Enter the (%d, %d) element of the matrix: ", i, j);
+            scanf("%f", &original[i][j]);
+        }
+    }
+    printf("The matrix you entered is :\n");
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            printf("%f ", original[i][j]);
+        }
+        printf("\n");
+    }
+    adjoint(size, original, adjointMat);
+    printf("The adjoint of the matrix is :\n");
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            printf("%f ", adjointMat[i][j]);
+        }
+        printf("\n");
+    }
+    printf("The inverse of the matrix is :\n");
+    matrix_inverse(size, original, adjointMat);
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            printf("%f ", adjointMat[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
 }
 
-int checkAB(char string[])
+void adjoint(int size, float original_matrix[][size], float adjoint_matrix[][size])
 {
-    static int output = FALSE;
-    if (string[0] != 'a')
-        return FALSE; // This is a guard clause
+    float temp[size - 1][size - 1];
+    int a, b;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            a = 0, b = 0;
+            for (int row = 0; row < size; row++)
+            {
+                for (int column = 0; column < size; column++)
+                {
+                    if (row != i && column != j)
+                    {
+                        temp[a][b] = original_matrix[row][column];
+                        ++b;
+                        (b == (size - 1)) ? (++a, b = 0) : (b = b);
+                    }
+                }
+            }
+            adjoint_matrix[j][i] = pow(-1, i + j) * determinant(size - 1, temp);
+        }
+    }
+}
 
-    if (string[1] == 'a' || (string[1] == 'b' && string[2] == 'b'))
+float determinant(int size, float arr[][size])
+{
+    float value_of_determinant = 0.0;
+    int a, b;
+    if (size == 1)
     {
-        output = TRUE;
-        checkAB(string + 1);
-    }
-    else if (strlen(string) == 1 || strlen(string) == 0)
-    {
-        return output;
-    }
-    else if (string[0] == 'b' && string[1] == 'b')
-    {
-        if (string[2] == 'a')
-        {
-            output = TRUE;
-            checkAB(string + 2);
-        }
-        else if (string[2] == '\0')
-        {
-            return output;
-        }
-        else
-        {
-            output = FALSE;
-        }
+        return arr[0][0];
     }
     else
     {
-        output = FALSE;
-        return output;
+        float helpPtr[size - 1][size - 1]; // Creating an Array to store parsed elements
+
+        for (int column = 0; column < size; column++)
+        {
+            // Filling the parsed array
+            a = 0, b = 0;
+            for (int i = 1; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (j != column)
+                    {
+                        helpPtr[a][b] = arr[i][j];
+                        b++;
+                        (b == (size - 1)) ? (a++, b = 0) : (b = b); // For iteration of the parsed array
+                    }
+                }
+            }
+            // Filling completed
+            value_of_determinant += pow(-1, column) * arr[0][column] * determinant(size - 1, helpPtr);
+        }
     }
-    return output;
+    return value_of_determinant;
+}
+
+void matrix_inverse(int size, float matrix[][size], float inverse_matrix[][size])
+{
+    adjoint(size, matrix, inverse_matrix);
+    float value_of_determinant = determinant(size, matrix);
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            inverse_matrix[i][j] /= value_of_determinant;
+        }
+    }
 }

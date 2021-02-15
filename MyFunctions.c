@@ -18,8 +18,8 @@ void squeeze(char s1[], char s2[]);                                             
 void textart(char a);                                                                // The text art function
 int getNum(int x, int v[], int n);                                                   // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
 int stringLength(char str[]);                                                        // Returns the length of the string
-void expand(char s1[], char s2[]);                                                   // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
-void itob(int n, char s[], int b);                                                   // This function will convert the integer n into the required base-b notation and save it in string s
+void expand(char string1[], char string2[]);                                         // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
+void itob(int number, char string[], int base);                                      // This function will convert the integer n into the required base-b notation and save it in string s
 void reverse(char s[]);                                                              // Reverses a string
 void swap(int *a, int *b);                                                           // It will swap the two numbers without the use of the third variable
 int largedNumberFinder(int arr[], int size);                                         // It will return the largest number in an array of integers

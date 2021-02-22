@@ -9,22 +9,21 @@ enum permissions
 };
 
 // List of functions in this file
-void selfShellSortAscending(int arr[], int size);                                    // Sort the array in Ascending order
-void selfShellSortDescending(int arr[], int size);                                   // Sort the array in Descending order
-int circleCount(int a, int b);                                                       // It will count the position in the array in circular way 'a' is the size of array and 'b' is the counting
-int termTeller(int *arr, int a);                                                     // It will tell the position of 'a' in array 'arr' (Method 1)
-int matchTeller(char s1[], char s2[]);                                               // It will tell the first matching character in s1 and s2, returns -1 if no match is found
-void squeeze(char s1[], char s2[]);                                                  // This funtion will remove each character in s1[] that matches any character in the string s2[]
-void textart(char a);                                                                // The text art function
+void selfShellSortAscending(int array[], int size);                                  // Sort the array in Ascending order
+void selfShellSortDescending(int array[], int size);                                 // Sort the array in Descending order
+int termTeller(int *pointer, int value);                                             // It will tell the position of 'a' in array 'arr' (Method 1)
+int matchTeller(char string_1[], char string_2[]);                                   // It will tell the first matching character in string_1 and string_2, returns -1 if no match is found
+void squeeze(char string_1[], char string_2[]);                                      // This funtion will remove each character in string_1[] that matches any character in the string string_2[]
+void textart(char character);                                                        // The text art function
 int getNum(int x, int v[], int n);                                                   // It will return the position of x (if present) else return -1 (Method 2, effective then Method 1)
-int stringLength(char str[]);                                                        // Returns the length of the string
-void expand(char string1[], char string2[]);                                         // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
+int stringLength(char string[]);                                                     // Returns the length of the string
+void expand(char string_1[], char string_2[]);                                       // It will expand the short hand notation like "a-z" to "abcdefghijklmnopqrstuvwxyz" in string s1 and save it to string s2 (example a-z, A-Z, 0-9, z-a, Z-A, 9-0) (NOTE: IT IS A CASE SENSITIVE FUNCTION)
 void itob(int number, char string[], int base);                                      // This function will convert the integer n into the required base-b notation and save it in string s
-void reverse(char s[]);                                                              // Reverses a string
-void swap(int *a, int *b);                                                           // It will swap the two numbers without the use of the third variable
-int largedNumberFinder(int arr[], int size);                                         // It will return the largest number in an array of integers
-int smallestNumberFinder(int arr[], int size);                                       // It will return the smallest number in an array of integers
-long long int factorial(long long int a);                                            // It will calculate the factorial of provided integer
+void reverse(char string[]);                                                         // Reverses a string
+void swap(int *number_1_address, int *number_2_address);                             // It will swap the two numbers without the use of the third variable
+int largedNumberFinder(int array[], int size);                                       // It will return the largest number in an array of integers
+int smallestNumberFinder(int array[], int size);                                     // It will return the smallest number in an array of integers
+long long int factorial(long long int number);                                       // It will calculate the factorial of provided integer
 long long int permutation(long long int n, long long int r);                         // It will calculate the permutation nPr
 long long int combination(long long int n, long long int r);                         // It will calculate the combination nCr
 float determinant(int size, float arr[][size]);                                      // It will calculate the determinant of square matrix of any size
@@ -66,19 +65,6 @@ void selfShellSortDescending(int arr[], int size)
             }
         }
     }
-}
-
-int circleCount(int a, int b)
-{
-    int i;
-    for (i = 0; i < b; i++)
-    {
-        if (b <= a * i)
-        {
-            break;
-        }
-    }
-    return (b + a - 1 - a * i);
 }
 
 int termTeller(int *arr, int a)
@@ -402,6 +388,7 @@ void reverse(char s[])
 void swap(int *a, int *b)
 {
     *a = *a + *b, *b = *a - *b, *a = *a - *b;
+    // *a ^= *b, *b ^= *a, *a ^= *b; // Alternative approach
 }
 
 int largedNumberFinder(int arr[], int size)
@@ -542,7 +529,7 @@ void delay(int number_of_seconds)
 void loading(void)
 {
     printf("Loading...\n");
-    sleep(1);
+    delay(1);
     printf("[--------------------] :\x1b[s%2d%%\r", 0); // The \x1b[s is used to store the current cursor position
     for (int i = 0; i < 20; i++)
     {
@@ -551,11 +538,13 @@ void loading(void)
         {
             printf("#");
         }
-        printf("\x1b[u%2d%%\r", 5 * (i + 1)); // The \x1b[u is used to retrieve the position of the cursor stored earlier
+        // The \x1b[u is used to retrieve the position of the cursor stored earlier
+        (i == 19) ? printf("\x1b[u%2d%%", 5 * (i + 1)) : printf("\x1b[u%2d%%\r", 5 * (i + 1));
+        // The above conditional expression is used so that when the loading is completed (last iteration of the loop), the cursor moves to the end of line instead of the start as it would do with the \r escape sequence
         if (i == 5 || i == 10 || i == 15)
             continue;
-        sleep(1);
+        delay(1);
     }
-    sleep(1);
+    delay(1);
 }
 #endif

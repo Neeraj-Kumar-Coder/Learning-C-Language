@@ -31,6 +31,7 @@ void adjoint(int size, float original_matrix[][size], float adjoint_matrix[][siz
 void matrix_inverse(int size, float matrix[][size], float inverse_matrix[][size]);   // It will find the inverse of the matrix of any size
 void delay(int number_of_seconds);                                                   // It will create a time delay in the code
 void loading(void);                                                                  // It will create a loading animation in the terminal
+int is_prime(int number);                                                            // It will tell whether the given number is prime of not
 
 // Function code starts here
 void selfShellSortAscending(int arr[], int size)
@@ -546,5 +547,15 @@ void loading(void)
         delay(1);
     }
     delay(1);
+}
+
+int is_prime(int number)
+{
+    for (int i = 2; i < number; i++)
+    {
+        if (!(number % i))
+            return NO;
+    }
+    return YES;
 }
 #endif

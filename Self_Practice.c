@@ -1,68 +1,57 @@
-// // An example of passing function as a function argument
-// #include <stdio.h>
-
-// void funcPasser(void func(), int i);
-// void functio(int x);
-
-// int main(void)
-// {
-//     funcPasser(functio, 5);
-//     return 0;
-// }
-
-// void funcPasser(void (*func)(), int i)
-// {
-//     return (*func)(i);
-// }
-
-// void functio(int x)
-// {
-//     printf("The square of the input is = %d\n", x * x);
-// }
-
-// // FUNCTION INSIDE A FUNCTION
-// #include <stdio.h>
-
-// void sample_func();
-
-// int main(void)
-// {
-//     void func()
-//     {
-//         printf("The sample text is this\n");
-//     }
-//     func();
-//     sample_func();
-//     return 0;
-// }
-
-// void sample_func()
-// {
-//     void start_func()
-//     {
-//         printf("I am in start_func\n");
-//     }
-//     start_func();
-// }
 #include <stdio.h>
+#define STORE 1
+#define DONOT_STORE 0
 
-int is_prime(int number);
+void name_Compressor(char name[]);
 
 int main(void)
 {
-    int value;
-    printf("Enter the number you want to check if it is prime or not: ");
-    scanf("%d", &value);
-    is_prime(value) ? printf("%d is a prime number\n", value) : printf("%d is not a prime number\n", value);
+    char name[50];
+    printf("Enter your name: ");
+    scanf("%[^\n]%*c", name);
+    printf("The name you entered is : %s\n", name);
+    name_Compressor(name);
+    printf("The compressed name is : %s\n", name);
     return 0;
 }
 
-int is_prime(int number)
+void name_Compressor(char name[])
 {
-    for (int i = 2; i < number; i++)
+    int number_of_spaces = 0, index_1 = 0, index_2 = 0, action = STORE;
+    while (name[index_1] != '\0') // This will count the number of spaces present in the name
     {
-        if (!(number % i))
-            return 0;
+        if (name[index_1] == ' ')
+        {
+            number_of_spaces++;
+        }
+        ++index_1;
     }
-    return 1;
+    char short_name_storer[50]; // It is a temporary array to store the shortend name
+    index_1 = 0;                // Resetting index_1
+    while (name[index_1] != '\0')
+    {
+        if (action == STORE)
+        {
+            short_name_storer[index_2++] = name[index_1];
+            action = DONOT_STORE;
+        }
+        else if (name[index_1] == ' ')
+        {
+            short_name_storer[index_2++] = name[index_1];
+            action = STORE;
+            --number_of_spaces;
+        }
+        else if (!number_of_spaces)
+        {
+            short_name_storer[index_2++] = name[index_1];
+        }
+        index_1++;
+    }
+    short_name_storer[index_2] = '\0';
+    index_1 = 0, index_2 = 0;                  // Resetting index_1 and index_2
+    while (short_name_storer[index_2] != '\0') // Copying the Shortend name in the main name array
+    {
+        name[index_1++] = short_name_storer[index_2++];
+    }
+    name[index_1] = '\0';
 }

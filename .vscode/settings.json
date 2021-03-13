@@ -7,6 +7,15 @@
         "stdalign.h": "c",
         "cstdlib": "c",
         "cstdio": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "unistd.h": "c",
+        "cmath": "c",
+        "compare": "c",
+        "concepts": "c",
+        "exception": "c",
+        "type_traits": "c",
+        "limits": "c",
+        "new": "c",
+        "typeinfo": "c"
     }
 }

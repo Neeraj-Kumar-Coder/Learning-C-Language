@@ -20,7 +20,8 @@ int main(void)
             scanf("%f", &original[i][j]);
         }
     }
-    printf("The matrix you entered is :\n");
+    FILE *ptr = freopen("Self.txt", "w", stdout);
+    printf("\nThe matrix you entered is :\n");
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -30,7 +31,7 @@ int main(void)
         printf("\n");
     }
     adjoint(size, original, adjointMat);
-    printf("The adjoint of the matrix is :\n");
+    printf("\nThe adjoint of the matrix is :\n");
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -39,7 +40,7 @@ int main(void)
         }
         printf("\n");
     }
-    printf("The inverse of the matrix is :\n");
+    printf("\nThe inverse of the matrix is :\n");
     matrix_inverse(size, original, adjointMat);
     for (int i = 0; i < size; i++)
     {
@@ -49,6 +50,7 @@ int main(void)
         }
         printf("\n");
     }
+    fclose(ptr);
     return 0;
 }
 

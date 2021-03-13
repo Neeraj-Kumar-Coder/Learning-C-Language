@@ -2,13 +2,15 @@
 #define MyFunction
 #include <math.h>
 #include <time.h>
+#define STORE 1
+#define DONOT_STORE 0
 enum permissions
 {
     NO,
     YES
 };
 
-// List of functions in this file
+// List of functions in this file (declarations)
 void selfShellSortAscending(int array[], int size);                                  // Sort the array in Ascending order
 void selfShellSortDescending(int array[], int size);                                 // Sort the array in Descending order
 int termTeller(int *pointer, int value);                                             // It will tell the position of 'a' in array 'arr' (Method 1)
@@ -32,8 +34,9 @@ void matrix_inverse(int size, float matrix[][size], float inverse_matrix[][size]
 void delay(int number_of_seconds);                                                   // It will create a time delay in the code
 void loading(void);                                                                  // It will create a loading animation in the terminal
 int is_prime(int number);                                                            // It will tell whether the given number is prime of not
+void name_Compressor(char name[]);                                                   // It will short the name (e.g. Ram Vilas Sharma == R V Sharma)
 
-// Function code starts here
+// Function definitions
 void selfShellSortAscending(int arr[], int size)
 {
     int temp;
@@ -557,5 +560,46 @@ int is_prime(int number)
             return NO;
     }
     return YES;
+}
+
+void name_Compressor(char name[])
+{
+    int number_of_spaces = 0, index_1 = 0, index_2 = 0, action = STORE;
+    while (name[index_1] != '\0') // This will count the number of spaces present in the name
+    {
+        if (name[index_1] == ' ')
+        {
+            number_of_spaces++;
+        }
+        ++index_1;
+    }
+    char short_name_storer[50]; // It is a temporary array to store the shortend name
+    index_1 = 0;                // Resetting index_1
+    while (name[index_1] != '\0')
+    {
+        if (action == STORE)
+        {
+            short_name_storer[index_2++] = name[index_1];
+            action = DONOT_STORE;
+        }
+        else if (name[index_1] == ' ')
+        {
+            short_name_storer[index_2++] = name[index_1];
+            action = STORE;
+            --number_of_spaces;
+        }
+        else if (!number_of_spaces)
+        {
+            short_name_storer[index_2++] = name[index_1];
+        }
+        index_1++;
+    }
+    short_name_storer[index_2] = '\0';
+    index_1 = 0, index_2 = 0;                  // Resetting index_1 and index_2
+    while (short_name_storer[index_2] != '\0') // Copying the Shortend name in the main name array
+    {
+        name[index_1++] = short_name_storer[index_2++];
+    }
+    name[index_1] = '\0';
 }
 #endif

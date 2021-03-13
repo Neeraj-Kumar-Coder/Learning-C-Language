@@ -20,7 +20,7 @@ int main(void)
             scanf("%f", &original[i][j]);
         }
     }
-    FILE *ptr = freopen("Self.txt", "w", stdout);
+    // FILE *ptr = freopen("Self.txt", "w", stdout);
     printf("\nThe matrix you entered is :\n");
     for (int i = 0; i < size; i++)
     {
@@ -50,7 +50,7 @@ int main(void)
         }
         printf("\n");
     }
-    fclose(ptr);
+    // fclose(ptr);
     return 0;
 }
 

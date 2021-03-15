@@ -78,7 +78,7 @@ int main()
             {
                 for (int k = 0; k < b; k++)
                 {
-                    mult[i][j] = mult[i][j] + Mat_A[i][k] * Mat_B[k][j]; //addition of each element one by one is executing. This is the reason why we have to make all the elements of the final matrix zero initially
+                    mult[i][j] += Mat_A[i][k] * Mat_B[k][j]; //addition of each element one by one is executing. This is the reason why we have to make all the elements of the final matrix zero initially
                 }
             }
         }
